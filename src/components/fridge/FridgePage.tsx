@@ -6,7 +6,7 @@ export default function FridgePage() {
     <>
       <div className={getStyle(styles, "container")}>
         <h1 className={getStyle(styles, "header")}>
-          What ingredients do you have?
+          What ingredients do you have in your fridge?
         </h1>
 
         <FridgeContainer />
