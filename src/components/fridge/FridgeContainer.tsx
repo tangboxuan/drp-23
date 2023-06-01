@@ -1,7 +1,7 @@
 import getStyle from "../../Styles";
 import Autocomplete from "@mui/material/Autocomplete";
 import { TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FridgeEntry from "./FridgeEntry";
 
 /* The dropdown list of ingredients */
@@ -21,6 +21,13 @@ export default function FridgeContainer() {
   /* Manage state of user-added ingredients */
   const [addedIngredients, setAddedIngredients] = useState(["cucumbers"]);
 
+  useEffect(() => {
+    fetch("get-fridge")
+    .then((res) => res.json())
+    .then((res) => res.map((item: any) => item.name))
+    .then((res) => setAddedIngredients(res))
+  }, [])
+
   function deleteIngredient(ingredient: string) {
     setAddedIngredients(
       addedIngredients.filter((item) => item !== ingredient)
@@ -28,7 +35,7 @@ export default function FridgeContainer() {
   }
 
   return (
-    <>
+    <>setAddedIngredients
       <div className={getStyle(styles, "container")}>
         <Autocomplete
           disablePortal
@@ -40,7 +47,16 @@ export default function FridgeContainer() {
           )}
           onChange={(_event: any, newValue: string | null) => {
             if (newValue !== null) {
-              setAddedIngredients([...addedIngredients, newValue]);
+              const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: newValue })
+              };
+
+              fetch('add-to-fridge', requestOptions)
+                .then(data => data.json())
+                .then((res) => res.map((item: any) => item.name))
+                .then(data => setAddedIngredients(data));
             }
           }}
           className={getStyle(styles, "autocomplete")}

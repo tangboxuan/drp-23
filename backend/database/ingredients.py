@@ -15,6 +15,6 @@ def get(id:int) -> Ingredient:
 def getAll() -> list:
     return Ingredient.query.all()
 
-def add(name:str, quantity:float):
+def add(name:str, quantity:int):
     db.session.add(Ingredient(name=name, quantity=quantity))
     db.session.commit()
