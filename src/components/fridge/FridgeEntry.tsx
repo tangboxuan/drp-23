@@ -1,5 +1,4 @@
 import getStyle from "../../Styles";
-import DeleteIcon from "../../assets/delete-left-solid.svg";
 
 interface Props {
   ingredient: string;

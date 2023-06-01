@@ -38,7 +38,7 @@ export default function FridgeContainer() {
           renderInput={(params) => (
             <TextField {...params} label="Enter an Ingredient" />
           )}
-          onChange={(event: any, newValue: string | null) => {
+          onChange={(_event: any, newValue: string | null) => {
             if (newValue !== null) {
               setAddedIngredients([...addedIngredients, newValue]);
             }

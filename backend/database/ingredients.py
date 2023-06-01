@@ -11,3 +11,10 @@ def init():
 
 def get(id:int) -> Ingredient:
     return db.get_or_404(Ingredient, id)
+
+def getAll() -> list:
+    return Ingredient.query.all()
+
+def add(name:str, quantity:float):
+    db.session.add(Ingredient(name=name, quantity=quantity))
+    db.session.commit()
