@@ -1,4 +1,5 @@
 from . import app
+from .controller import ingredient
 
 @app.route('/')
 def index():
@@ -7,3 +8,7 @@ def index():
 @app.route("/test")
 def test():
     return "Hello World"
+
+@app.route("/test-db")
+def testDB():
+    return ingredient.test()
