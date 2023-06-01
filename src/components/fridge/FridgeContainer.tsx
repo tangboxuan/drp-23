@@ -1,7 +1,10 @@
 import getStyle from "../../Styles";
 import Autocomplete from "@mui/material/Autocomplete";
 import { TextField } from "@mui/material";
+import { useState } from "react";
+import FridgeEntry from "./FridgeEntry";
 
+/* The dropdown list of ingredients */
 const sampleIngredients = [
   "apple",
   "banana",
@@ -14,9 +17,10 @@ const sampleIngredients = [
   "ice cream",
 ];
 
-const listedIngredients = [];
-
 export default function FridgeContainer() {
+  /* Manage state of user-added ingredients */
+  const [addedIngredients, setAddedIngredients] = useState(["cucumbers"]);
+
   return (
     <>
       <div className={getStyle(styles, "container")}>
@@ -28,13 +32,22 @@ export default function FridgeContainer() {
           renderInput={(params) => (
             <TextField {...params} label="Enter an Ingredient" />
           )}
+          onChange={(event: any, newValue: string | null) => {
+            if (newValue !== null) {
+              setAddedIngredients([...addedIngredients, newValue]);
+            }
+          }}
           className={getStyle(styles, "autocomplete")}
         />
 
         <div className={getStyle(styles, "entryCtn")}>
-          {listedIngredients.length === 0 && (
+          {addedIngredients.length === 0 && (
             <p className={getStyle(styles, "opt")}>Add an Item!</p>
           )}
+
+          {addedIngredients.map((ingredient) => (
+            <FridgeEntry ingredient={ingredient} />
+          ))}
         </div>
       </div>
     </>
@@ -56,6 +69,6 @@ const styles = {
     "justify-center",
   ],
   autocomplete: ["scale-95"],
-  entryCtn: ["flex", "flex-wrap", "w-1/2", "mt-4"],
+  entryCtn: ["flex", "flex-wrap", "w-full", "mt-6"],
   opt: ["ml-2"],
 };
