@@ -21,6 +21,12 @@ export default function FridgeContainer() {
   /* Manage state of user-added ingredients */
   const [addedIngredients, setAddedIngredients] = useState(["cucumbers"]);
 
+  function deleteIngredient(ingredient: string) {
+    setAddedIngredients(
+      addedIngredients.filter((item) => item !== ingredient)
+    );
+  }
+
   return (
     <>
       <div className={getStyle(styles, "container")}>
@@ -46,7 +52,7 @@ export default function FridgeContainer() {
           )}
 
           {addedIngredients.map((ingredient) => (
-            <FridgeEntry ingredient={ingredient} />
+            <FridgeEntry onClick={deleteIngredient} ingredient={ingredient} />
           ))}
         </div>
       </div>
