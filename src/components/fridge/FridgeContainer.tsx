@@ -35,7 +35,7 @@ export default function FridgeContainer() {
   }
 
   return (
-    <>setAddedIngredients
+    <>
       <div className={getStyle(styles, "container")}>
         <Autocomplete
           disablePortal
