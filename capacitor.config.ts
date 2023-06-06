@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'drp23',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    url: 'http://localhost:5173/',
   }
 };
 
