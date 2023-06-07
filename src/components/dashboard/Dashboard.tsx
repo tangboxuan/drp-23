@@ -8,7 +8,9 @@ function Dashboard() {
 
       <h1 className={getStyle(styles, "subtitle")}>My fridge</h1>
 
-      <Warning ingredient="apples" date="3 days" color="yellow" />
+      <Warning ingredient="apples" />
+
+      
     </div>
   );
 }
