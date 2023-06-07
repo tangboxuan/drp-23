@@ -2,20 +2,28 @@ import getStyle from "../../Styles";
 import Warning from "./Warning";
 import QuickView from "./QuickView";
 import Key from "./Key";
+import Footer from "../shared/Footer";
+import { CurrentPage } from "../../util/CurrentPage";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   return (
-    <div className={getStyle(styles, "container")}>
-      <h1 className={getStyle(styles, "title")}>Hi, Ryan</h1>
+    <>
+      <div className={getStyle(styles, "container")}>
+        <h1 className={getStyle(styles, "title")}>Hi, Ryan</h1>
 
-      <h1 className={getStyle(styles, "subtitle")}>My fridge</h1>
+        <h1 className={getStyle(styles, "subtitle")}>My fridge</h1>
 
-      <Warning ingredient="apples" />
+        <Warning ingredient="apples" />
 
-      <QuickView />
+        <Link to="/Fridge"><QuickView /></Link>
 
-      <Key />
-    </div>
+
+        <Key />
+
+      </div>
+      <Footer currentPage={CurrentPage.Home} />
+    </>
   );
 }
 

@@ -12,18 +12,24 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 import Dashboard from "./components/dashboard/Dashboard";
+import Fridge from "./components/fridge/Fridge";
 import getStyle from "./Styles";
-import Footer from "./components/shared/Footer";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CurrentPage } from "./util/CurrentPage";
 
 setupIonicReact();
 
 function App() {
   return (
-    <div className={getStyle(styles, "container")}>
-      <Dashboard />
-
-      <Footer />
-    </div>
+    <Router>
+      <div className={getStyle(styles, "container")}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path={CurrentPage.Fridge} element={<Fridge />} />
+          <Route path={CurrentPage.Home} element={<Dashboard />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

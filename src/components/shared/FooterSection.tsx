@@ -2,46 +2,50 @@ import getStyle from "../../Styles";
 import { IonIcon } from "@ionic/react";
 import { homeOutline } from "ionicons/icons";
 import Fridge from "../../assets/fridge.png";
+import { Link } from 'react-router-dom'
+import { CurrentPage } from "../../util/CurrentPage";
 
 interface Props {
-  section: string;
+  section: CurrentPage;
   active: boolean;
 }
 
 function FooterSection({ section, active }: Props) {
   return (
-    <div className={getStyle(styles, "container")}>
-      {section === "Home" ? (
-        <IonIcon
-          className={
-            active
-              ? getStyle(styles, "homeActive")
-              : getStyle(styles, "homeInactive")
-          }
-          icon={homeOutline}
-        ></IonIcon>
-      ) : (
-        <img
-          className={
-            active
-              ? getStyle(styles, "fridgeActive")
-              : getStyle(styles, "fridgeInactive")
-          }
-          src={Fridge}
-          alt=""
-        />
-      )}
+    <Link to={"/" + section}>
+      <div className={getStyle(styles, "container")}>
+        {section === CurrentPage.Home ? (
+          <IonIcon
+            className={
+              active
+                ? getStyle(styles, "homeActive")
+                : getStyle(styles, "homeInactive")
+            }
+            icon={homeOutline}
+          ></IonIcon>
+        ) : (
+          <img
+            className={
+              active
+                ? getStyle(styles, "fridgeActive")
+                : getStyle(styles, "fridgeInactive")
+            }
+            src={Fridge}
+            alt=""
+          />
+        )}
 
-      <p
-        className={
-          active
-            ? getStyle(styles, "textActive")
-            : getStyle(styles, "textInactive")
-        }
-      >
-        {section}
-      </p>
-    </div>
+        <p
+          className={
+            active
+              ? getStyle(styles, "textActive")
+              : getStyle(styles, "textInactive")
+          }
+        >
+          {section}
+        </p>
+      </div>
+    </Link>
   );
 }
 

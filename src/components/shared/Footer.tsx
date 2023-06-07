@@ -1,12 +1,17 @@
 import getStyle from "../../Styles";
 import FooterSection from "./FooterSection";
+import { CurrentPage } from "../../util/CurrentPage";
 
-function Footer() {
+interface Props {
+  currentPage: CurrentPage
+}
+
+function Footer({ currentPage }: Props) {
   return (
     <div className={getStyle(styles, "container")}>
       <div className={getStyle(styles, "subCtn")}>
-        <FooterSection section="Home" active={true} />
-        <FooterSection section="Fridge" active={false} />
+        <FooterSection section={CurrentPage.Home} active={currentPage == CurrentPage.Home} />
+        <FooterSection section={CurrentPage.Fridge} active={currentPage == CurrentPage.Fridge} />
       </div>
     </div>
   );
