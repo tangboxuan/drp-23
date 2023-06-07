@@ -6,7 +6,20 @@ export default {
     "./src/components/*.tsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        alertYellow: "#FFDB49",
+        alertRed: "#A92D2D",
+        alertTextRed: "#C53737",
+        backgroundBeige: "#FFE8C7",
+        cancelRed: "#C53737",
+        expirationRed: "#CD0000",
+        interactiveText: "#555555",
+        outlineGray: "#ADADAD",
+        safeGreen: "#3D8A00",
+        warningOrange: "#F16B0A",
+      },
+    },
   },
   plugins: [],
 }
