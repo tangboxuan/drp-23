@@ -41,6 +41,7 @@ const styles = {
     "mt-6",
     "w-full",
     "h-16",
+    "shadow-lg",
   ],
   date: [
     "flex",

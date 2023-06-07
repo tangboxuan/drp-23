@@ -1,5 +1,6 @@
 import getStyle from "../../Styles";
 import Warning from "./Warning";
+import QuickView from "./QuickView";
 
 function Dashboard() {
   return (
@@ -10,7 +11,7 @@ function Dashboard() {
 
       <Warning ingredient="apples" />
 
-      
+      <QuickView />
     </div>
   );
 }
