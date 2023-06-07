@@ -2,6 +2,7 @@ import getStyle from "../../Styles";
 import Warning from "./Warning";
 import QuickView from "./QuickView";
 import Key from "./Key";
+import Footer from "../shared/Footer";
 
 function Dashboard() {
   return (
@@ -20,7 +21,7 @@ function Dashboard() {
 }
 
 const styles = {
-  container: ["flex", "flex-col"],
+  container: ["flex", "flex-col", "h-full", "w-full", "p-10", "mt-5"],
   title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
   subtitle: ["text-xl", "font-bold", "mt-9", "tracking-wide"],
 };

@@ -20,6 +20,7 @@ import "@ionic/react/css/display.css";
 
 import Dashboard from "./components/dashboard/Dashboard";
 import getStyle from "./Styles";
+import Footer from "./components/shared/Footer";
 
 setupIonicReact();
 
@@ -27,12 +28,14 @@ function App() {
   return (
     <div className={getStyle(styles, "container")}>
       <Dashboard />
+
+      <Footer />
     </div>
   );
 }
 
 const styles = {
-  container: ["p-10", "mt-5"],
+  container: ["flex", "flex-col"],
 };
 export default App;
 

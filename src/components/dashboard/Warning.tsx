@@ -54,7 +54,13 @@ const styles = {
     "h-12",
     "ml-3",
   ],
-  dateText: ["text-white", "text-[13px]", "mt-[-5px]", "text-sm"],
+  dateText: [
+    "text-white",
+    "text-[13px]",
+    "mt-[-5px]",
+    "text-sm",
+    "font-semibold",
+  ],
   icon: ["w-9", "h-9", "mr-3"],
   message: ["text-[15px]"],
 };

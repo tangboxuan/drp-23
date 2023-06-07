@@ -17,6 +17,7 @@ export default {
         interactiveText: "#555555",
         outlineGray: "#ADADAD",
         safeGreen: "#3D8A00",
+        selectedRed: "#FF3434",
         warningOrange: "#F16B0A",
       },
     },
