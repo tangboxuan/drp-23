@@ -4,17 +4,30 @@ import QuickViewIngredient from "./QuickViewIngredient";
 function QuickView() {
   return (
     <div className={getStyle(styles, "container")}>
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
-      <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
+      <div className={getStyle(styles, "subCtn")}>
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
+        <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
+        <div className={getStyle(styles, "plusCtn")}>
+          <svg
+            className={getStyle(styles, "plus")}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+          </svg>
+        </div>
+      </div>
+
+      <div className={getStyle(styles, "tapForMore")}>Tap for more...</div>
     </div>
   );
 }
@@ -26,12 +39,25 @@ const styles = {
     "bg-backgroundBeige",
     "rounded-2xl",
     "mt-9",
-    "grid",
-    "grid-cols-4",
     "py-6",
     "px-3",
-    "gap-y-6",
   ],
+  subCtn: ["grid", "grid-cols-4", "gap-y-6"],
+  plus: ["fill-white", "rounded-full", "h-[28px]", "w-[28px]"],
+  plusCtn: [
+    "border-[5px]",
+    "border-black",
+    "bg-black",
+    "rounded-full",
+    "h-[44px]",
+    "w-[44px]",
+    "flex",
+    "justify-center",
+    "items-center",
+    "mx-[10px]",
+    "shadow-xl",
+  ],
+  tapForMore: ["text-sm", "w-full", "mt-7", "ml-3", "font-semibold"],
 };
 
 export default QuickView;
