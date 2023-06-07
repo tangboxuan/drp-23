@@ -8,7 +8,7 @@ interface Props {
 }
 
 function QuickViewIngredient({ ingredient, expiryStatus }: Props) {
-  var expiryColor: string;
+  let expiryColor: string;
 
   if (expiryStatus === "green") {
     expiryColor = "containerGreen";
