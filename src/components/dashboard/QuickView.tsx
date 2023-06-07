@@ -34,7 +34,7 @@ function QuickView() {
 
 const styles = {
   container: [
-    "shadow-lg",
+    "shadow-md",
     "w-full",
     "bg-backgroundBeige",
     "rounded-2xl",
