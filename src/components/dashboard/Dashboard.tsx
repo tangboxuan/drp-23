@@ -2,7 +2,6 @@ import getStyle from "../../Styles";
 import Warning from "./Warning";
 import QuickView from "./QuickView";
 import Key from "./Key";
-import Footer from "../shared/Footer";
 
 function Dashboard() {
   return (
