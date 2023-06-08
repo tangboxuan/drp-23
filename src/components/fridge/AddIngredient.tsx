@@ -1,11 +1,13 @@
 import { useState } from "react";
 import getStyle from "../../Styles";
-import { TextField } from "@mui/material";
+import { TextField, Select, MenuItem } from "@mui/material";
 import api from "../../api";
 
 interface Props {
     refresh: () => void;
 }
+
+const vegetables = new Set(["Broccoli"]);
 
 function AddIngredient({ refresh }: Props) {
     const [adding, setAdding] = useState(false);
@@ -14,21 +16,12 @@ function AddIngredient({ refresh }: Props) {
     const [expiry, setExpiry] = useState(0)
 
     const addToFridge = () => {
-        let category;
-        let image;
-        if (ingredient.toLowerCase().includes("broccoli")) {
-            category = "Vegetable";
-            image = "src/assets/broccoli.png";
-        } else {
-            category = "Fruit";
-            image = "src/assets/kiwi.png";
-        }
         api.post("/add-to-fridge", {
             name: ingredient,
             quantity: quantity,
             expiry: expiry,
-            image: image,
-            category: category
+            image: ingredient,
+            category: vegetables.has(ingredient) ? "Vegetables" : "Fruits"
         }).then(() => {
             setAdding(false);
             setIngredient("");
@@ -46,7 +39,14 @@ function AddIngredient({ refresh }: Props) {
                     </svg>
 
                 </div>
-                <TextField label="Ingredient" onChange={e => setIngredient(e.target.value)} />
+                <Select
+                    value={ingredient}
+                    label="Ingredient"
+                    onChange={(e) => setIngredient(e.target.value)}
+                >
+                    <MenuItem value={"Broccoli"}>Broccoli</MenuItem>
+                    <MenuItem value={"Kiwi"}>Kiwi</MenuItem>
+                </Select>
                 <TextField label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
                 <TextField label="Days to Expiry" onChange={e => setExpiry(parseInt(e.target.value))} />
                 <div className={getStyle(styles, "green_circle")} onClick={addToFridge}>

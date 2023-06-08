@@ -11,7 +11,7 @@ class Ingredient(db.Model):
 
 
 def init():
-    db.session.add(Ingredient(name="Broccoli", quantity=5, image="/src/assets/broccoli.png", category="Vegetable", expiry=3))
+    db.session.add(Ingredient(name="Broccoli", quantity=5, image="Brocolli", category="Vegetable", expiry=3))
     db.session.commit()
 
 

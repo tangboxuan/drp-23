@@ -1,10 +1,17 @@
 import getStyle from "../../Styles";
 import api from "../../api";
 import expiryStatusFromDate from "../../util/ExpiryStatusFromDate";
+import Broccoli from "../../assets/broccoli.png";
+import Kiwi from "../../assets/kiwi.png";
 
 interface Props {
     ingredient: Ingredient;
     refresh: () => void;
+}
+
+const images: { [key: string]: any }= {
+    "Broccoli": Broccoli,
+    "Kiwi": Kiwi
 }
 
 function IngredientRow({ ingredient, refresh }: Props) {
@@ -24,7 +31,7 @@ function IngredientRow({ ingredient, refresh }: Props) {
         <tr className={[getStyle(styles, "row"), colour].join(" ")}>
             <td className={getStyle(styles, "leftEdge")}>
                 <div className={getStyle(styles, "circle")}>
-                    <img className={getStyle(styles, "ingredient")} src={ingredient.image} alt="" />
+                    <img className={getStyle(styles, "ingredient")} src={images[ingredient.name]} alt="" />
                 </div>
             </td>
             <td>x {quantityTruncated}</td>
