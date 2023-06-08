@@ -8,7 +8,7 @@ const getBaseUrl = () => {
       break;
     case 'development':
     default:
-      url = "http://10.0.2.2:5000";
+      url = "http://localhost:5000";
   }
 
   return url;
