@@ -1,16 +1,6 @@
 import { CurrentPage } from "../../util/CurrentPage";
+import getStyle from "../../Styles";
 import Footer from "../shared/Footer";
-import FridgeContents from "./FridgeContents";
-
-function Fridge() {
-  return (
-    <>
-      <FridgeContents ingredients={INGREDIENTS} />
-      <Footer currentPage={CurrentPage.Fridge} />
-    </>
-  );
-}
-
 import Broccoli from "../../assets/broccoli.png";
 
 const INGREDIENTS = [
@@ -50,5 +40,28 @@ const INGREDIENTS = [
     category: "Vegetables",
   },
 ];
+
+function Fridge() {
+  return (
+    <div className={getStyle(styles, "container")}>
+      
+      <div className={getStyle(styles, "header")}>
+        <h1 className={getStyle(styles, "title")}>Your fridge</h1>
+        
+      </div>
+
+
+      <Footer currentPage={CurrentPage.Fridge} />
+    </div>
+  );
+}
+
+const styles = {
+    container: [
+        "flex",
+        "flex-col"
+
+    ],
+};
 
 export default Fridge;

@@ -14,7 +14,7 @@ import "@ionic/react/css/display.css";
 import Dashboard from "./components/dashboard/Dashboard";
 import Fridge from "./components/fridge/Fridge";
 import getStyle from "./Styles";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CurrentPage } from "./util/CurrentPage";
 
 setupIonicReact();
