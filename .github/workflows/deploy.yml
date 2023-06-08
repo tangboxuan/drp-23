@@ -43,8 +43,9 @@ jobs:
         with:
           files: junit/test-results.xml
 
-      - name: Build Android App
-        uses: sparkfabrik/android-build-action@v1.5.0
+      - uses: sparkfabrik/android-build-action@v1.0.0
+        with:
+          project-path: android
         
         if: always()
   deploy:
