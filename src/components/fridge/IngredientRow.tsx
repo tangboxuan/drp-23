@@ -19,6 +19,7 @@ function IngredientRow({ ingredient, refresh }: Props) {
     }
 
     const colour = expiryStatusFromDate(ingredient.expiry);
+    const quantityTruncated = Math.floor(ingredient.quantity);
     return (
         <tr className={[getStyle(styles, "row"), colour].join(" ")}>
             <td className={getStyle(styles, "leftEdge")}>
@@ -26,7 +27,7 @@ function IngredientRow({ ingredient, refresh }: Props) {
                     <img className={getStyle(styles, "ingredient")} src={ingredient.image} alt="" />
                 </div>
             </td>
-            <td>x {ingredient.quantity}</td>
+            <td>x {quantityTruncated}</td>
             <td>{ingredient.name}</td>
             <td>{ingredient.expiry} days</td>
             <td>
