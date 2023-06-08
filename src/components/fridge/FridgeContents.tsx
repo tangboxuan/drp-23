@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import IngredientCategoryRow from "./IngredientCategoryRow";
 import IngredientRow from "./IngredientRow";
+import getStyle from "../../Styles";
 
 interface Props {
     ingredients: Ingredient[];
@@ -23,10 +24,17 @@ function FridgeContents({ ingredients }: Props) {
     });
 
     return (
-        <table>
-            <tbody>{rows}</tbody>
-        </table>
+        <div className={getStyle(styles, "container")}>
+            <table className={getStyle(styles, "table")}>
+                <tbody>{rows}</tbody>
+            </table>
+        </div>
     )
+}
+
+const styles = {
+    container: ["flex", "flex-col", "h-full", "w-full", "p-10", "mt-5"],
+    table: ["border-separate", "border-spacing-y-3", "table-auto"]
 }
 
 export default FridgeContents;
