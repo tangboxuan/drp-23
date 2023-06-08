@@ -1,4 +1,5 @@
 interface Ingredient {
+    id: number;
     name: string;
     quantity: number;
     image: string;

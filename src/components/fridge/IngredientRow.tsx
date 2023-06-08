@@ -1,11 +1,23 @@
 import getStyle from "../../Styles";
+import api from "../../api";
 import expiryStatusFromDate from "../../util/ExpiryStatusFromDate";
 
 interface Props {
     ingredient: Ingredient;
+    refresh: () => void;
 }
 
-function IngredientRow({ ingredient }: Props) {
+function IngredientRow({ ingredient, refresh }: Props) {
+
+
+    const deleteIngredient = (id: number) => {
+        api.post("/delete-from-fridge", {
+            id: id
+        }).then(() => {
+            refresh();
+        })
+    }
+
     const colour = expiryStatusFromDate(ingredient.expiry);
     return (
         <tr className={[getStyle(styles, "row"), colour].join(" ")}>
@@ -25,7 +37,7 @@ function IngredientRow({ ingredient }: Props) {
                 </div>
             </td>
             <td className={getStyle(styles, "rightEdge")}>
-                <div className={getStyle(styles, "smallCircle")}>
+                <div className={getStyle(styles, "smallCircle")} onClick={() => deleteIngredient(ingredient.id)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" className={getStyle(styles, "icon")}>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
