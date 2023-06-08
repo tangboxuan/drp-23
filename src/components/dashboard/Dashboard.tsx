@@ -16,11 +16,11 @@ function Dashboard() {
 
         <Warning ingredient="apples" />
 
-        <Link to="/Fridge"><QuickView /></Link>
-
+        <Link to="/Fridge">
+          <QuickView />
+        </Link>
 
         <Key />
-
       </div>
       <Footer currentPage={CurrentPage.Home} />
     </>
