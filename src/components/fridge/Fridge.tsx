@@ -3,7 +3,7 @@ import getStyle from "../../Styles";
 import Footer from "../shared/Footer";
 import Broccoli from "../../assets/broccoli.png";
 import { IonIcon } from "@ionic/react";
-import { settingsOutline } from "ionicons/icons";
+import { settingsOutline, addOutline } from "ionicons/icons";
 import SortBy from "./SortBy";
 import { Ingredient } from "../../util/Ingredients";
 import IngredientList from "./IngredientList";
@@ -48,25 +48,38 @@ const INGREDIENTS: Ingredient[] = [
 
 function Fridge() {
   return (
-    <div className={getStyle(styles, "container")}>
-      <div className={getStyle(styles, "header")}>
-        <h1 className={getStyle(styles, "title")}>Your fridge</h1>
-        <IonIcon
-          className={getStyle(styles, "settingsIcon")}
-          icon={settingsOutline}
-        />
+    <>
+      <div className={getStyle(styles, "container")}>
+        <div className={getStyle(styles, "header")}>
+          <h1 className={getStyle(styles, "title")}>Your fridge</h1>
+          <IonIcon
+            className={getStyle(styles, "settingsIcon")}
+            icon={settingsOutline}
+          />
+        </div>
+
+        <SortBy />
+
+        <IngredientList ingredients={INGREDIENTS} />
+
+        <IonIcon className={getStyle(styles, "addCtn")} icon={addOutline} />
       </div>
-
-      <SortBy />
-
-      <IngredientList ingredients={INGREDIENTS} />
-
       <Footer currentPage={CurrentPage.Fridge} />
-    </div>
+    </>
   );
 }
 
 const styles = {
+  addCtn: [
+    "w-[45px]",
+    "h-[45px]",
+    "bg-black",
+    "shadow-lg",
+    "rounded-full",
+    "text-white",
+    "self-center",
+    "mt-8",
+  ],
   container: ["flex", "flex-col", "h-full", "w-full", "p-10", "mt-5"],
   header: ["flex", "justify-between", "items-center", "mt-8"],
   settingsIcon: ["w-[31px]", "h-[31px]"],
