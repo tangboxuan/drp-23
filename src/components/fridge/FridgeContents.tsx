@@ -1,33 +1,70 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import IngredientCategoryRow from "./IngredientCategoryRow";
 import IngredientRow from "./IngredientRow";
 import getStyle from "../../Styles";
 import AddIngredient from "./AddIngredient";
+import ViewSwitch from "./ViewSwitch";
 
 interface Props {
     ingredients: Ingredient[];
     refresh: () => void;
 }
 
-function FridgeContents({ ingredients, refresh }: Props) {
-    const rows: ReactNode[] = [];
-    let lastCategory = "";
+function groupIngredientsByCategory(ingredients: Ingredient[]) {
+    const series = Array.from(new Set(ingredients.map((ingredient) => ingredient.category)));
+    const groupedIngredients: { [key: string]: Ingredient[] } = {};
 
-    ingredients.forEach((ingredient) => {
-        if (ingredient.category !== lastCategory) {
-            rows.push(
-                <IngredientCategoryRow category={ingredient.category} key={ingredient.category} />
-            );
-        }
-
-        rows.push(<IngredientRow ingredient={ingredient} key={ingredient.id} refresh={refresh} />);
-
-        lastCategory = ingredient.category;
+    series.forEach((category) => {
+        groupedIngredients[category] = ingredients.filter((ingredient) => ingredient.category === category);
     });
+
+    return groupedIngredients;
+}
+
+function sortIngredientsByExpiry(ingredients: Ingredient[]) {
+    return ingredients.sort((a, b) => {
+        return a.expiry - b.expiry;
+    });
+}
+
+function categoriseView(ingredients: Ingredient[], refresh: () => void) {
+    const groupedIngredients = groupIngredientsByCategory(ingredients);
+    const rows: ReactNode[] = [];
+    for (const key in groupedIngredients) {
+        const ingredients = groupedIngredients[key];
+
+        rows.push(<IngredientCategoryRow category={key} key={key} />);
+
+        sortIngredientsByExpiry(ingredients);
+
+        ingredients.forEach(element => {
+            rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} />);
+        });
+    }
+
+    return rows;
+}
+
+function sortView(ingredients: Ingredient[], refresh: () => void) {
+    sortIngredientsByExpiry(ingredients);
+
+    const rows: ReactNode[] = [];
+    ingredients.forEach(element => {
+        rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} />);
+    });
+
+    return rows;
+}
+
+function FridgeContents({ ingredients, refresh }: Props) {
+    const [categoryView, setCategoryView] = useState(true);
+    const rows: ReactNode[] = categoryView ? categoriseView(ingredients, refresh) : sortView(ingredients, refresh);
+
 
     return (
         <div className={getStyle(styles, "container")}>
             <AddIngredient refresh={refresh} />
+            <ViewSwitch change={setCategoryView} />
             <table className={getStyle(styles, "table")}>
                 <tbody>{rows}</tbody>
             </table>
