@@ -11,11 +11,13 @@ function AddIngredient({refresh}: Props) {
     const [adding, setAdding] = useState(false);
     const [ingredient, setIngredient] = useState("")
     const [quantity, setQuantity] = useState(0)
+    const [expiry, setExpiry] = useState(0)
 
     const addToFridge = () => {
         api.post("/add-to-fridge", {
             name: ingredient,
             quantity: quantity,
+            expiry: expiry,
             image: "src/assets/broccoli.png",
             category: "vegetable"
         }).then(() => {
@@ -37,6 +39,7 @@ function AddIngredient({refresh}: Props) {
         </div>
         <TextField label="Ingredient" onChange={e => setIngredient(e.target.value)}/>
         <TextField label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))}/>
+        <TextField label="Days to Expiry" onChange={e => setExpiry(parseInt(e.target.value))}/>
         <div className={getStyle(styles, "green_circle")} onClick={addToFridge}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" className={getStyle(styles, "icon")}>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
