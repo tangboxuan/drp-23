@@ -3,7 +3,8 @@ from ..database import ingredients
 def json(i:ingredients.Ingredient) -> dict:
     return {
         "name": i.name,
-        "quantity": i.quantity
+        "quantity": i.quantity,
+        "image": i.image
     }
 
 def add(data):

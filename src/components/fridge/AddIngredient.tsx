@@ -3,7 +3,11 @@ import getStyle from "../../Styles";
 import { TextField } from "@mui/material";
 import api from "../../api";
 
-function AddIngredient() {
+interface Props {
+    refresh: () => void;
+}
+
+function AddIngredient({refresh}: Props) {
     const [adding, setAdding] = useState(false);
     const [ingredient, setIngredient] = useState("")
     const [quantity, setQuantity] = useState(0)
@@ -18,6 +22,7 @@ function AddIngredient() {
             setAdding(false);
             setIngredient("");
             setQuantity(0);
+            refresh();
         })
     }
 

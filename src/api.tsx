@@ -1,9 +1,21 @@
 import axios from "axios";
 
-export const BASE_URL = "https://drp23.herokuapp.com";
+const getBaseUrl = () => {
+    let url;
+    switch(process.env.NODE_ENV) {
+      case 'production':
+        url = "https://drp23.herokuapp.com";
+        break;
+      case 'development':
+      default:
+        url = "http://localhost:5000";
+    }
+  
+    return url;
+  }
 
 const client = axios.create({
-  baseURL: `${BASE_URL}`,
+  baseURL: getBaseUrl(),
   timeout: 30000,
   withCredentials: true,
 });

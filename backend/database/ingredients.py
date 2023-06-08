@@ -9,7 +9,7 @@ class Ingredient(db.Model):
     category = db.Column(db.String, nullable=False)
 
 def init():
-    db.session.add(Ingredient(name="Broccoli", quantity=5, image="src/assets/broccoli.png", category="Vegetable"))
+    db.session.add(Ingredient(name="Broccoli", quantity=5, image="/src/assets/broccoli.png", category="Vegetable"))
     db.session.commit()
 
 def get(id:int) -> Ingredient:

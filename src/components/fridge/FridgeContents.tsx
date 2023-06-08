@@ -6,9 +6,10 @@ import AddIngredient from "./AddIngredient";
 
 interface Props {
     ingredients: Ingredient[];
+    refresh: () => void;
 }
 
-function FridgeContents({ ingredients }: Props) {
+function FridgeContents({ ingredients, refresh}: Props) {
     const rows: ReactNode[] = [];
     let lastCategory = "";
 
@@ -26,7 +27,7 @@ function FridgeContents({ ingredients }: Props) {
 
     return (
         <div className={getStyle(styles, "container")}>
-            <AddIngredient />
+            <AddIngredient refresh={refresh}/>
             <table className={getStyle(styles, "table")}>
                 <tbody>{rows}</tbody>
             </table>
