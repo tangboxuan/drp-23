@@ -124,6 +124,7 @@ const styles = {
     "w-full",
     "h-[45px]",
     "relative",
+    "mt-3",
   ],
   containerGreen: [
     "border-[3.5px]",
@@ -180,6 +181,6 @@ const styles = {
   ],
   icon: ["w-3", "h-3"],
   ingredient: ["h-[19px]", "w-[19px]"],
-  text: ["text-sm", "ml-5"],
-  textQty: ["text-sm", "ml-3"],
+  text: ["text-sm", "ml-5", "font-medium"],
+  textQty: ["text-sm", "ml-3", "font-medium"],
 };
