@@ -2,9 +2,6 @@ import getStyle from "../../Styles";
 import { Ingredient } from "../../util/Ingredients";
 import Broccoli from "../../assets/broccoli.png";
 import Kiwi from "../../assets/kiwi.png";
-import expiryStatusFromDate from "../../util/ExpiryStatusFromDate";
-import { IonIcon } from "@ionic/react";
-import { pencilOutline, text } from "ionicons/icons";
 
 interface Props {
   ingredient: Ingredient;
