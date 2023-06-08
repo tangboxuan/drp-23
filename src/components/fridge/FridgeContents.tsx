@@ -9,25 +9,25 @@ interface Props {
     refresh: () => void;
 }
 
-function FridgeContents({ ingredients, refresh}: Props) {
+function FridgeContents({ ingredients, refresh }: Props) {
     const rows: ReactNode[] = [];
     let lastCategory = "";
 
     ingredients.forEach((ingredient) => {
         if (ingredient.category !== lastCategory) {
             rows.push(
-                <IngredientCategoryRow category={ingredient.category} key={ingredient.category} />
+                <IngredientCategoryRow category={ingredient.category} key={ingredient.id} />
             );
         }
 
-        rows.push(<IngredientRow ingredient={ingredient} key={ingredient.name} />);
+        rows.push(<IngredientRow ingredient={ingredient} key={ingredient.id} refresh={refresh} />);
 
         lastCategory = ingredient.category;
     });
 
     return (
         <div className={getStyle(styles, "container")}>
-            <AddIngredient refresh={refresh}/>
+            <AddIngredient refresh={refresh} />
             <table className={getStyle(styles, "table")}>
                 <tbody>{rows}</tbody>
             </table>
