@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import IngredientCategoryRow from "./IngredientCategoryRow";
 import IngredientRow from "./IngredientRow";
 import getStyle from "../../Styles";
+import AddIngredient from "./AddIngredient";
 
 interface Props {
     ingredients: Ingredient[];
@@ -25,6 +26,7 @@ function FridgeContents({ ingredients }: Props) {
 
     return (
         <div className={getStyle(styles, "container")}>
+            <AddIngredient />
             <table className={getStyle(styles, "table")}>
                 <tbody>{rows}</tbody>
             </table>
