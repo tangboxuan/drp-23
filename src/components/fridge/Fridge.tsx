@@ -2,8 +2,13 @@ import { CurrentPage } from "../../util/CurrentPage";
 import getStyle from "../../Styles";
 import Footer from "../shared/Footer";
 import Broccoli from "../../assets/broccoli.png";
+import { IonIcon } from "@ionic/react";
+import { settingsOutline } from "ionicons/icons";
+import SortBy from "./SortBy";
+import { Ingredient } from "../../util/Ingredients";
+import IngredientList from "./IngredientList";
 
-const INGREDIENTS = [
+const INGREDIENTS: Ingredient[] = [
   {
     name: "broccoli",
     quantity: 3,
@@ -44,12 +49,17 @@ const INGREDIENTS = [
 function Fridge() {
   return (
     <div className={getStyle(styles, "container")}>
-      
       <div className={getStyle(styles, "header")}>
         <h1 className={getStyle(styles, "title")}>Your fridge</h1>
-        
+        <IonIcon
+          className={getStyle(styles, "settingsIcon")}
+          icon={settingsOutline}
+        />
       </div>
 
+      <SortBy />
+
+      <IngredientList ingredients={INGREDIENTS} />
 
       <Footer currentPage={CurrentPage.Fridge} />
     </div>
@@ -57,11 +67,10 @@ function Fridge() {
 }
 
 const styles = {
-    container: [
-        "flex",
-        "flex-col"
-
-    ],
+  container: ["flex", "flex-col", "h-full", "w-full", "p-10", "mt-5"],
+  header: ["flex", "justify-between", "items-center", "mt-8"],
+  settingsIcon: ["w-[31px]", "h-[31px]"],
+  title: ["text-2xl", "font-bold", "tracking-wide"],
 };
 
 export default Fridge;
