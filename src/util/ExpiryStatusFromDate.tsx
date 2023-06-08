@@ -8,7 +8,7 @@ function expiryStatusFromDate(daysTillExpiry: number): string {
     }
 }
 
-const LOWER_BOUNDARY = 2;
-const MEDIUM_BOUNDARY = 4;
+export const LOWER_BOUNDARY = 1;
+export const MEDIUM_BOUNDARY = 4;
 
 export default expiryStatusFromDate;
