@@ -16,7 +16,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
     ingredients.forEach((ingredient) => {
         if (ingredient.category !== lastCategory) {
             rows.push(
-                <IngredientCategoryRow category={ingredient.category} key={ingredient.id} />
+                <IngredientCategoryRow category={ingredient.category} key={ingredient.category} />
             );
         }
 

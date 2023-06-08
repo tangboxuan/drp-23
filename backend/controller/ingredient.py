@@ -8,11 +8,14 @@ def json(i: ingredients.Ingredient) -> dict:
         "quantity": i.quantity,
         "image": i.image,
         "expiry": i.expiry,
+        "category": i.category,
     }
 
 
 def add(data):
-    ingredients.add(data["name"], data["quantity"], data["image"], data["category"], data["expiry"])
+    ingredients.add(data["name"], data["quantity"],
+                    data["image"], data["category"], data["expiry"])
+
 
 def getAll():
     return list(map(json, ingredients.getAll()))
