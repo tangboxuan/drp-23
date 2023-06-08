@@ -60,6 +60,9 @@ jobs:
         uses: sparkfabrik/android-build-action@v1.5.0
         with:
           project-path: android
+          browserstack-upload: true
+          browserstack-username: jakubmichalski_MJ3olc
+          browserstack-access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         
         if: always()
   deploy:
