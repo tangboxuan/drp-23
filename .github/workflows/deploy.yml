@@ -42,6 +42,11 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           files: junit/test-results.xml
+        
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: Build Android App
         uses: sparkfabrik/android-build-action@v1.5.0
