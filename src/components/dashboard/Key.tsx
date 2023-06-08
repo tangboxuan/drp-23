@@ -4,7 +4,7 @@ function Key() {
   return (
     <div className={getStyle(styles, "container")}>
       <div className={getStyle(styles, "key")}>
-        <div className={getStyle(styles, "circleGreen")}></div>
+        <div className={getStyle(styles, "circleRed")}></div>
         <div className={getStyle(styles, "text")}>1-2 Days</div>
       </div>
 
@@ -14,7 +14,7 @@ function Key() {
       </div>
 
       <div className={getStyle(styles, "key")}>
-        <div className={getStyle(styles, "circleRed")}></div>
+        <div className={getStyle(styles, "circleGreen")}></div>
         <div className={getStyle(styles, "text")}>5+ Days</div>
       </div>
     </div>
