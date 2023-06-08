@@ -6,8 +6,9 @@ from sqlalchemy import inspect
 
 with app.app_context():
     insp = inspect(db.engine)
-    ingredient_init = not insp.has_table("ingredient")
+    db.drop_all()
+    # ingredient_init = not insp.has_table("ingredient")
     db.create_all()
-    if ingredient_init:
-        ingredients.init()
+    # if ingredient_init:
+    ingredients.init()
     print("Database initialised")

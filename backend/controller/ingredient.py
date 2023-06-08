@@ -6,8 +6,8 @@ def json(i:ingredients.Ingredient) -> dict:
         "quantity": i.quantity
     }
 
-def add(name: str, quantity: int):
-    ingredients.add(name, quantity)
+def add(data):
+    ingredients.add(data["name"], data["quantity"], data["image"], data["category"])
 
 def getAll():
     return list(map(json, ingredients.getAll()))

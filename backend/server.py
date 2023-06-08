@@ -9,8 +9,8 @@ def index():
 
 @app.route('/add-to-fridge', methods=['POST'])
 def add_to_fridge():
-    ingredient.add(request.json['name'], 1)
-    return ingredient.getAll()
+    ingredient.add(request.json)
+    return ""
 
 @app.route('/get-fridge')
 def get_fridge():
