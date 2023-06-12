@@ -1,6 +1,6 @@
 import getStyle from "../../Styles";
 import api from "../../api";
-import expiryStatusFromDate from "../../util/ExpiryStatusFromDate";
+import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
 import Broccoli from "../../assets/broccoli.png";
 import Kiwi from "../../assets/kiwi.png";
 import { Checkbox } from "@mui/material";
