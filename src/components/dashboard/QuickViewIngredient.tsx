@@ -1,6 +1,4 @@
 import getStyle from "../../Styles";
-import Broccoli from "../../assets/broccoli.png";
-import Kiwi from "../../assets/kiwi.png";
 import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
 import images from "../../util/Images";
 
@@ -9,8 +7,6 @@ interface Props {
 }
 
 function QuickViewIngredient({ ingredient }: Props) {
-  let expiryColor: string;
-
   const colour = "border-" + expiryColourFromDate(ingredient.expiry);
 
   return (
