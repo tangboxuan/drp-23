@@ -46,14 +46,14 @@ function IngredientRow({ ingredient, refresh, handleOnChange }: Props) {
                     </svg>
                 </button>
             </td>
-            <td className={getStyle(styles, "rightEdge")}>
+            <td>
                 <button className={getStyle(styles, "smallCircle")} onClick={() => deleteIngredient(ingredient.id)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" className={getStyle(styles, "icon")}>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </td>
-            <td>
+            <td className={getStyle(styles, "rightEdge")}>
                 <Checkbox onChange={(e) => handleOnChange(ingredient.id, e.target.checked)} color="primary" />
             </td>
         </tr>
