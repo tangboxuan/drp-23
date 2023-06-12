@@ -7,7 +7,7 @@ interface Props {
 function IngredientCategoryRow({ category }: Props) {
     return (
         <tr className={getStyle(styles, "row")}>
-            <th colSpan={6}>
+            <th colSpan={7}>
                 {category}
             </th>
         </tr >

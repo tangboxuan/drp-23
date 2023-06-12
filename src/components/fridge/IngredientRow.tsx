@@ -1,15 +1,22 @@
 import getStyle from "../../Styles";
 import api from "../../api";
-import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
-import images from "../../util/Images";
+import expiryStatusFromDate from "../../util/ExpiryStatusFromDate";
+import Broccoli from "../../assets/broccoli.png";
+import Kiwi from "../../assets/kiwi.png";
+import { Checkbox } from "@mui/material";
 
 interface Props {
     ingredient: Ingredient;
     refresh: () => void;
+    handleOnChange: (id: number, checked: boolean) => void;
 }
 
+const images: { [key: string]: string } = {
+    "Broccoli": Broccoli,
+    "Kiwi": Kiwi
+}
 
-function IngredientRow({ ingredient, refresh }: Props) {
+function IngredientRow({ ingredient, refresh, handleOnChange }: Props) {
 
 
     const deleteIngredient = (id: number) => {
@@ -45,6 +52,9 @@ function IngredientRow({ ingredient, refresh }: Props) {
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
+            </td>
+            <td>
+                <Checkbox onChange={(e) => handleOnChange(ingredient.id, e.target.checked)} color="primary" />
             </td>
         </tr>
     )

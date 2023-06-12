@@ -16,6 +16,7 @@ import Fridge from "./components/fridge/Fridge";
 import getStyle from "./Styles";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CurrentPage } from "./util/CurrentPage";
+import Recipes from "./components/recipes/Recipes";
 
 setupIonicReact();
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path={CurrentPage.Fridge} element={<Fridge />} />
           <Route path={CurrentPage.Home} element={<Dashboard />} />
+          <Route path={CurrentPage.Recipes} element={<Recipes />} />
         </Routes>
       </div>
     </Router>
