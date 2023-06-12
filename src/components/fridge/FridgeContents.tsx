@@ -27,7 +27,7 @@ function sortIngredientsByExpiry(ingredients: Ingredient[]) {
     });
 }
 
-function categoriseView(ingredients: Ingredient[], refresh: () => void) {
+function categoriseView(ingredients: Ingredient[], refresh: () => void, updateCheckbox: (ingredientId: number, checked: boolean) => void) {
     const groupedIngredients = groupIngredientsByCategory(ingredients);
     const rows: ReactNode[] = [];
     for (const key in groupedIngredients) {
@@ -38,19 +38,19 @@ function categoriseView(ingredients: Ingredient[], refresh: () => void) {
         sortIngredientsByExpiry(ingredients);
 
         ingredients.forEach(element => {
-            rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} />);
+            rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} handleOnChange={updateCheckbox} />);
         });
     }
 
     return rows;
 }
 
-function sortView(ingredients: Ingredient[], refresh: () => void) {
+function sortView(ingredients: Ingredient[], refresh: () => void, updateCheckbox: (ingredientId: number, checked: boolean) => void) {
     sortIngredientsByExpiry(ingredients);
 
     const rows: ReactNode[] = [];
     ingredients.forEach(element => {
-        rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} />);
+        rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} handleOnChange={updateCheckbox} />);
     });
 
     return rows;
@@ -58,7 +58,16 @@ function sortView(ingredients: Ingredient[], refresh: () => void) {
 
 function FridgeContents({ ingredients, refresh }: Props) {
     const [categoryView, setCategoryView] = useState(true);
-    const rows: ReactNode[] = categoryView ? categoriseView(ingredients, refresh) : sortView(ingredients, refresh);
+    const [checkedValues, setCheckedValues] = useState<{ [id: number]: boolean }>([]);
+
+    function updateCheckbox(ingredientId: number, checked: boolean) {
+        const newValues = { ...checkedValues };
+        newValues[ingredientId] = checked;
+        setCheckedValues(newValues);
+    }
+
+    const rows: ReactNode[] = categoryView ? categoriseView(ingredients, refresh, updateCheckbox) : sortView(ingredients, refresh, updateCheckbox);
+    console.log(checkedValues);
 
 
     return (
