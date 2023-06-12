@@ -1,18 +1,13 @@
 import getStyle from "../../Styles";
 import api from "../../api";
-import expiryStatusFromDate from "../../util/ExpiryStatusFromDate";
-import Broccoli from "../../assets/broccoli.png";
-import Kiwi from "../../assets/kiwi.png";
+import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
+import images from "../../util/Images";
 
 interface Props {
     ingredient: Ingredient;
     refresh: () => void;
 }
 
-const images: { [key: string]: any }= {
-    "Broccoli": Broccoli,
-    "Kiwi": Kiwi
-}
 
 function IngredientRow({ ingredient, refresh }: Props) {
 
@@ -25,10 +20,10 @@ function IngredientRow({ ingredient, refresh }: Props) {
         })
     }
 
-    const colour = expiryStatusFromDate(ingredient.expiry);
+    const bgColour = "bg-" + expiryColourFromDate(ingredient.expiry);
     const quantityTruncated = Math.floor(ingredient.quantity);
     return (
-        <tr className={[getStyle(styles, "row"), colour].join(" ")}>
+        <tr className={[getStyle(styles, "row"), bgColour].join(" ")}>
             <td className={getStyle(styles, "leftEdge")}>
                 <div className={getStyle(styles, "circle")}>
                     <img className={getStyle(styles, "ingredient")} src={images[ingredient.name]} alt="" />
