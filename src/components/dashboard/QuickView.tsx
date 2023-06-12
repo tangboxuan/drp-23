@@ -1,21 +1,38 @@
+import { useEffect, useState } from "react";
 import getStyle from "../../Styles";
 import QuickViewIngredient from "./QuickViewIngredient";
+import api from "../../api";
 
 function QuickView() {
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+
+  const refreshIngredients = () => {
+    api.get("/get-fridge").then((response) => {
+      setIngredients(response.data);
+    });
+  };
+
+  useEffect(() => {
+    refreshIngredients();
+  }, []);
+
+  const rings: React.ReactNode[] = [];
+
+  ingredients.sort((a, b) => {
+    return a.expiry - b.expiry;
+  });
+
+  ingredients.forEach((ingredient) => {
+    rings.push(
+      <QuickViewIngredient ingredient={ingredient} />
+    );
+  });
+
+
   return (
     <div className={getStyle(styles, "container")}>
       <div className={getStyle(styles, "subCtn")}>
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="red" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="orange" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
-        <QuickViewIngredient ingredient="broccoli" expiryStatus="green" />
+        {rings}
         <div className={getStyle(styles, "plusCtn")}>
           <svg
             className={getStyle(styles, "plus")}

@@ -1,62 +1,28 @@
 import getStyle from "../../Styles";
 import Broccoli from "../../assets/broccoli.png";
 import Kiwi from "../../assets/kiwi.png";
+import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
+import images from "../../util/Images";
 
 interface Props {
-  ingredient: string; // String for now, but will be changed to Ingredient type
-  expiryStatus: string; // String for now, but will be changed to ExpiryStatus type
+  ingredient: Ingredient;
 }
 
-function QuickViewIngredient({ ingredient, expiryStatus }: Props) {
+function QuickViewIngredient({ ingredient }: Props) {
   let expiryColor: string;
 
-  if (expiryStatus === "green") {
-    expiryColor = "containerGreen";
-  } else if (expiryStatus === "orange") {
-    expiryColor = "containerOrange";
-  } else {
-    expiryColor = "containerRed";
-  }
+  const colour = "border-" + expiryColourFromDate(ingredient.expiry);
 
   return (
-    <div className={getStyle(styles, expiryColor)}>
-      {ingredient === "broccoli" ? (
-        <img className={getStyle(styles, "ingredient")} src={Broccoli} alt="" />
-      ) : (
-        <img className={getStyle(styles, "ingredient")} src={Kiwi} alt="" />
-      )}
+    <div className={[getStyle(styles, "container"), colour].join(" ")}>
+      <img className={getStyle(styles, "ingredient")} src={images[ingredient.name]} alt="" />
     </div>
   );
 }
 
 const styles = {
-  containerGreen: [
+  container: [
     "border-[5px]",
-    "border-safeGreen",
-    "bg-white",
-    "rounded-full",
-    "h-[44px]",
-    "w-[44px]",
-    "flex",
-    "justify-center",
-    "items-center",
-    "mx-[10px]",
-  ],
-  containerOrange: [
-    "border-[5px]",
-    "border-warningOrange",
-    "bg-white",
-    "rounded-full",
-    "h-[44px]",
-    "w-[44px]",
-    "flex",
-    "justify-center",
-    "items-center",
-    "mx-[10px]",
-  ],
-  containerRed: [
-    "border-[5px]",
-    "border-expirationRed",
     "bg-white",
     "rounded-full",
     "h-[44px]",
