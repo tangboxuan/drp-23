@@ -2,6 +2,7 @@ import { useState } from "react"
 import getStyle from "../../Styles"
 import { TextField, Select, MenuItem } from "@mui/material"
 import api from "../../api"
+import { DatePicker } from '@mui/x-date-pickers';
 
 interface Props {
     refresh: () => void
@@ -10,10 +11,10 @@ interface Props {
 const vegetables = new Set(["Broccoli"])
 
 function AddIngredient({ refresh }: Props) {
-    const [adding, setAdding] = useState(false)
-    const [ingredient, setIngredient] = useState("")
-    const [quantity, setQuantity] = useState(0)
-    const [expiry, setExpiry] = useState(0)
+    const [adding, setAdding] = useState(false);
+    const [ingredient, setIngredient] = useState("");
+    const [quantity, setQuantity] = useState(0);
+    const [expiry, setExpiry] = useState<Date|null>(new Date());
 
     const addToFridge = () => {
         api.post("/add-to-fridge", {
@@ -55,7 +56,8 @@ function AddIngredient({ refresh }: Props) {
                     <TextField  label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
                 </div>
                 <div className={getStyle(styles, "rowitem3")}>
-                    <TextField label="Days to Expiry" onChange={e => setExpiry(parseInt(e.target.value))} />
+                    {/* <TextField label="Days to Expiry" onChange={e => setExpiry(parseInt(e.target.value))} /> */}
+                    <DatePicker onChange={(v: Date|null) => setExpiry(v)}/>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "green_tick")} onClick={addToFridge}>
