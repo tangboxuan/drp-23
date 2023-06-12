@@ -14,7 +14,9 @@ function Dashboard() {
 
         <h1 className={getStyle(styles, "subtitle")}>My fridge</h1>
 
-        <Warning ingredient="apples" />
+        <Link to="/Recipes">
+          <Warning ingredient="apples" />
+        </Link>
 
         <Link to="/Fridge">
           <QuickView />

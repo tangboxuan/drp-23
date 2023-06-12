@@ -1,4 +1,5 @@
 export enum CurrentPage {
     Home = "Home",
-    Fridge = "Fridge"
+    Fridge = "Fridge",
+    Recipes = "Recipes",
 }

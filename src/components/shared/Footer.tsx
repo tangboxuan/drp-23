@@ -12,6 +12,7 @@ function Footer({ currentPage }: Props) {
       <div className={getStyle(styles, "subCtn")}>
         <FooterSection section={CurrentPage.Home} active={currentPage == CurrentPage.Home} />
         <FooterSection section={CurrentPage.Fridge} active={currentPage == CurrentPage.Fridge} />
+        <FooterSection section={CurrentPage.Recipes} active={currentPage == CurrentPage.Recipes} />
       </div>
     </div>
   );
