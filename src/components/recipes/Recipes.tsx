@@ -2,9 +2,9 @@ import { CurrentPage } from "../../util/CurrentPage";
 import Footer from "../shared/Footer";
 import { useLocation } from "react-router-dom";
 import fridgeApi from "../../api"
-import recipesApi from "./RecipesApi"
+// import recipesApi from "./RecipesApi"
 
-import { ReactElement, JSXElementConstructor, ReactFragment, useState, useEffect } from "react";
+import { useState } from "react";
 import { recipeDetails, recipeSummaries } from "./SampleRecipes";
 import RecipeCard from "./RecipeCard";
 import getStyle from "../../Styles";
