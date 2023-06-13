@@ -60,7 +60,7 @@ function AddIngredient({ refresh }: Props) {
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "green_tick")} onClick={addToFridge}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke={"white"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke={"white"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     </button>
                 </div>
             </div>
@@ -78,7 +78,7 @@ function AddIngredient({ refresh }: Props) {
 }
 
 const styles = {
-    row: ["flex", "flex-row", "ion-justify-content-center", "w-full", "p-0", "mb-5", "ion-align-items-center", "h-5"],
+    row: ["flex", "flex-row", "ion-justify-content-center", "w-full", "p-0", "mb-5", "ion-align-items-center", "h-5", "bg-backgroundBeige", "rounded-xl"],
     addingRow: ["flex", "flex-row", "ion-justify-content-center", "w-full", "p-0", "mb-20", "ion-align-items-center", "h-20"],
     rowitem: ["m-1"],
     rowitem2: ["m-1", "w-30"],
