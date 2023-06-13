@@ -77,7 +77,7 @@ function AddIngredient({ refresh }: Props) {
 }
 
 const styles = {
-    row: ["flex", "flex-row", "ion-justify-content-center", "w-full", "p-5", "mt-5", "ion-align-items-center", "h-20"],
+    row: ["flex", "flex-row", "ion-justify-content-center", "w-full", "p-5", "mt-5", "ion-align-items-center", "h-20", "bg-backgroundBeige", "rounded-xl"],
     rowitem: ["m-1"],
     rowitem2: ["m-1", "w-30"],
     rowitem3: ["m-1", "w-40"],

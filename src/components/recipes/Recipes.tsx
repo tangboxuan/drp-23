@@ -68,12 +68,17 @@ function Recipes() {
                                 Recipes you can make
                             </th>
                         </tr >
-                        {(fridgeOnly.length > 0) ? fridgeOnly : <tr className={getStyle(styles, "row")}><td colSpan={4}>No recipes found</td></tr>}
-                        <tr className={getStyle(styles, "row")}>
+                        {(fridgeOnly.length > 0) ? fridgeOnly : <tr><td colSpan={4}>No recipes found</td></tr>}
+                        {/* <tr className={getStyle(styles, "row")}>
                             <th colSpan={4}>
                                 Recipes you can make with additional ingredients
                             </th>
-                        </tr >
+                        </tr > */}
+                        <tr>
+                            <th colSpan={2}>Recipes you can make with additional ingredients</th>
+                            <th>Time (mins)</th>
+                            <th>$ per serving</th>
+                        </tr>
                         {ingredientsNeededRecipes}
                     </tbody>
                 </table>
@@ -86,7 +91,7 @@ function Recipes() {
 const styles = {
     container: ["flex", "flex-col", "h-full", "w-full", "p-10", "mt-5"],
     table: ["border-separate", "border-spacing-y-3", "table-auto"],
-    row: ["border", "border-black"],
+    row: ["text-xl"],
     title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
 }
 
