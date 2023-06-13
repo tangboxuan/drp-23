@@ -43,21 +43,24 @@ function AddIngredient({ refresh }: Props) {
                     </button>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
-                    <Select
-                        value={ingredient}
-                        label="Ingredient"
-                        onChange={(e) => setIngredient(e.target.value)}
-                    >
-                        <MenuItem value={"Broccoli"}>Broccoli</MenuItem>
-                        <MenuItem value={"Kiwi"}>Kiwi</MenuItem>
-                    </Select>
-                </div>
-                <div className={getStyle(styles, "rowitem2")}>
-                    <TextField  label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
-                </div>
-                <div className={getStyle(styles, "rowitem3")}>
-                    {/* <TextField label="Days to Expiry" onChange={e => setExpiry(parseInt(e.target.value))} /> */}
-                    <DatePicker onChange={(v: Date|null) => setExpiry(v)}/>
+                    <div className={getStyle(styles, "addrow")}>
+                        <Select
+                            fullWidth
+                            value={ingredient}
+                            label="Ingredient"
+                            onChange={(e) => setIngredient(e.target.value)}
+                        >
+                            <MenuItem value={"Broccoli"}>Broccoli</MenuItem>
+                            <MenuItem value={"Kiwi"}>Kiwi</MenuItem>
+                        </Select>
+                    </div>
+                    <div className={getStyle(styles, "addrow")}>
+                        <TextField  fullWidth label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
+                    </div>
+                    <div className={getStyle(styles, "addrow")}>
+                        {/* <TextField label="Days to Expiry" onChange={e => setExpiry(parseInt(e.target.value))} /> */}
+                        <DatePicker onChange={(v: Date|null) => setExpiry(v)}/>
+                    </div>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "green_tick")} onClick={addToFridge}>
@@ -87,7 +90,8 @@ const styles = {
     green_circle: ["rounded-full", "flex", "items-center", "justify-center", "h-10", "w-10", "bg-green-700"],
     green_tick: ["rounded-full", "flex", "items-center", "justify-center", "h-10", "w-10", "bg-green-700", "ml-1"],
     red_circle: ["rounded-full", "flex", "items-center", "justify-center", "h-10", "w-10", "bg-expirationRed", "mr-1"],
-    icon: ["h-6", "w-6"]
+    icon: ["h-6", "w-6"],
+    addrow: ["flex", "flex-row", "ion-justify-content-center", "w-full", "ion-align-items-center"],
 }
 
 export default AddIngredient
