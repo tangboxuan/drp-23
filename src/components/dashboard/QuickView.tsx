@@ -24,7 +24,7 @@ function QuickView() {
 
   ingredients.forEach((ingredient) => {
     rings.push(
-      <QuickViewIngredient ingredient={ingredient} />
+      <QuickViewIngredient key={ingredient.name+ingredient.expiry} ingredient={ingredient} />
     );
   });
 

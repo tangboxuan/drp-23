@@ -14,11 +14,11 @@ function Dashboard() {
 
         <h1 className={getStyle(styles, "subtitle")}>My fridge</h1>
 
-        <Link to="/Recipes">
+        <Link to={"/"+CurrentPage.Recipes}>
           <Warning ingredient="apples" />
         </Link>
 
-        <Link to="/Fridge">
+        <Link to={"/"+CurrentPage.Fridge}>
           <QuickView />
         </Link>
 
