@@ -10,7 +10,7 @@ function QuickViewIngredient({ ingredient }: Props) {
   const colour = "border-" + expiryColourFromDate(ingredient.expiry);
 
   return (
-    <div className={[getStyle(styles, "container"), colour].join(" ")}>
+    <div className={[colour, getStyle(styles, "container")].join(" ")}>
       <img className={getStyle(styles, "ingredient")} src={images[ingredient.name]} alt="" />
     </div>
   );

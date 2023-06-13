@@ -1,6 +1,6 @@
 import { useState } from "react"
 import getStyle from "../../Styles"
-import { TextField, Select, MenuItem } from "@mui/material"
+import { TextField, Select, MenuItem, SelectChangeEvent, InputLabel, FormControl } from "@mui/material"
 import api from "../../api"
 import { DatePicker } from '@mui/x-date-pickers';
 
@@ -33,7 +33,7 @@ function AddIngredient({ refresh }: Props) {
 
     return (
         adding
-            ? <div className={getStyle(styles, "row")}>
+            ? <div className={getStyle(styles, "addingRow")}>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "red_circle")} onClick={() => setAdding(!adding)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className={getStyle(styles, "icon")}>
@@ -43,24 +43,20 @@ function AddIngredient({ refresh }: Props) {
                     </button>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
-                    <div className={getStyle(styles, "addrow")}>
-                        <Select
-                            fullWidth
-                            value={ingredient}
-                            label="Ingredient"
-                            onChange={(e) => setIngredient(e.target.value)}
-                        >
-                            <MenuItem value={"Broccoli"}>Broccoli</MenuItem>
-                            <MenuItem value={"Kiwi"}>Kiwi</MenuItem>
-                        </Select>
-                    </div>
-                    <div className={getStyle(styles, "addrow")}>
-                        <TextField  fullWidth label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
-                    </div>
-                    <div className={getStyle(styles, "addrow")}>
-                        {/* <TextField label="Days to Expiry" onChange={e => setExpiry(parseInt(e.target.value))} /> */}
-                        <DatePicker onChange={(v: Date|null) => setExpiry(v)}/>
-                    </div>
+                <FormControl fullWidth>
+                    <InputLabel id="ingredient-label">Ingredient</InputLabel>
+                    <Select
+                        fullWidth
+                        label="Ingredient"
+                        labelId="ingredient-label"
+                        onChange={(e: SelectChangeEvent<string>) => setIngredient(e.target.value)}
+                    >
+                        <MenuItem value={"Broccoli"}>Broccoli</MenuItem>
+                        <MenuItem value={"Kiwi"}>Kiwi</MenuItem>
+                    </Select>
+                    <TextField  fullWidth label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
+                    <DatePicker onChange={(v: Date|null) => setExpiry(v)}/>
+                </FormControl>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "green_tick")} onClick={addToFridge}>
@@ -82,7 +78,8 @@ function AddIngredient({ refresh }: Props) {
 }
 
 const styles = {
-    row: ["flex", "flex-row", "ion-justify-content-center", "w-full", "p-5", "mt-5", "ion-align-items-center", "h-20"],
+    row: ["flex", "flex-row", "ion-justify-content-center", "w-full", "p-0", "mb-5", "ion-align-items-center", "h-5"],
+    addingRow: ["flex", "flex-row", "ion-justify-content-center", "w-full", "p-0", "mb-20", "ion-align-items-center", "h-20"],
     rowitem: ["m-1"],
     rowitem2: ["m-1", "w-30"],
     rowitem3: ["m-1", "w-40"],
