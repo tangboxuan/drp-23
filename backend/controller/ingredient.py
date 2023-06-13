@@ -1,6 +1,6 @@
 from ..database import ingredients
 
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 def json(i: ingredients.Ingredient) -> dict:
     return {
@@ -30,3 +30,6 @@ def test():
 def delete(data):
     print(data)
     ingredients.delete(data["id"])
+
+def modify(data):
+    ingredients.modify(data["id"], data["quantity"], date.today() + timedelta(days=data["expiry"]-1))

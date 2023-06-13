@@ -31,3 +31,9 @@ def add(name:str, quantity:int, image:str, category:str, expiry:int):
 def delete(id: int):
     db.session.delete(get(id))
     db.session.commit()
+
+def modify(id:int, quantity:int, expiry:date):
+    ingredient = get(id)
+    ingredient.quantity = quantity
+    ingredient.expiry = expiry
+    db.session.commit()
