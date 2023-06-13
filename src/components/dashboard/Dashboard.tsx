@@ -30,8 +30,8 @@ function Dashboard() {
 }
 
 const styles = {
-  container: ["flex", "flex-col", "h-full", "w-full", "p-10", "mt-5"],
-  title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
+  container: ["flex", "flex-col", "h-full", "w-full", "pb-20", "p-10", "mt-5", "overflow-y-scroll", "max-h-screen"],
+  title: ["text-2xl", "font-bold", "tracking-wide"],
   subtitle: ["text-xl", "font-bold", "mt-9", "tracking-wide"],
 };
 
