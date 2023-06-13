@@ -25,8 +25,9 @@ const styles = {
     "w-full",
     "border-t",
     "border-outlineGray",
-    "h-20",
+    "h-15",
     "pt-2",
+    "bg-white",
   ],
   subCtn: ["flex", "items-center", "justify-around"],
 };

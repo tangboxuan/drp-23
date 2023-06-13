@@ -44,7 +44,7 @@ function FooterSection({ section, active }: Props) {
 
   const icons = {
     Home: homeIcon,
-    Fridge: fridgeIcon,
+    Pantry: fridgeIcon,
     Recipes: recipesIcon,
   }
 

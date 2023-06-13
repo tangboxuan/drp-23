@@ -18,20 +18,27 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CurrentPage } from "./util/CurrentPage";
 import Recipes from "./components/recipes/Recipes";
 
+
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import 'dayjs/locale/en-gb';
+
 setupIonicReact();
 
 function App() {
   return (
-    <Router>
-      <div className={getStyle(styles, "container")}>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path={CurrentPage.Fridge} element={<Fridge />} />
-          <Route path={CurrentPage.Home} element={<Dashboard />} />
-          <Route path={CurrentPage.Recipes} element={<Recipes />} />
-        </Routes>
-      </div>
-    </Router>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
+      <Router>
+        <div className={getStyle(styles, "container")}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path={CurrentPage.Fridge} element={<Fridge />} />
+            <Route path={CurrentPage.Home} element={<Dashboard />} />
+            <Route path={CurrentPage.Recipes} element={<Recipes />} />
+          </Routes>
+        </div>
+      </Router>
+    </LocalizationProvider>
   );
 }
 

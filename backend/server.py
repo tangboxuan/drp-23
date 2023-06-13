@@ -34,3 +34,9 @@ def testDB():
 def delete_from_fridge():
     ingredient.delete(request.json)
     return ""
+
+@app.route("/modify-ingredient", methods=['POST'])
+def modify_ingredient():
+    ingredient.modify(request.json)
+    return ""
+
