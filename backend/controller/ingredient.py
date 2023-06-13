@@ -1,6 +1,6 @@
 from ..database import ingredients
 
-from datetime import date, datetime, timezone
+from datetime import datetime, date
 
 def json(i: ingredients.Ingredient) -> dict:
     return {
@@ -8,7 +8,7 @@ def json(i: ingredients.Ingredient) -> dict:
         "name": i.name,
         "quantity": i.quantity,
         "image": i.image,
-        "expiry": (i.expiry - date.today()).days,
+        "expiry": (i.expiry - date.today()).days + 1,
         "category": i.category,
     }
 
@@ -16,7 +16,7 @@ def json(i: ingredients.Ingredient) -> dict:
 def add(data):
     ingredients.add(data["name"], data["quantity"],
                     data["image"], data["category"], 
-                    datetime.fromisoformat(data["expiry"]).astimezone(tz=None))
+                    datetime.fromisoformat(data["expiry"]))
 
 
 def getAll():
