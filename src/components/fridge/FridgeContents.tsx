@@ -4,6 +4,8 @@ import IngredientRow from "./IngredientRow";
 import getStyle from "../../Styles";
 import AddIngredient from "./AddIngredient";
 import ViewSwitch from "./ViewSwitch";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 interface Props {
     ingredients: Ingredient[];
@@ -69,6 +71,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
     const rows: ReactNode[] = categoryView ? categoriseView(ingredients, refresh, updateCheckbox) : sortView(ingredients, refresh, updateCheckbox);
     console.log(checkedValues);
 
+    const checkedIngredients = ingredients.filter((ingredient) => checkedValues[ingredient.id]);
 
     return (
         <div className={getStyle(styles, "container")}>
@@ -77,7 +80,12 @@ function FridgeContents({ ingredients, refresh }: Props) {
             <table className={getStyle(styles, "table")}>
                 <tbody>{rows}</tbody>
             </table>
-        </div>
+            <Link to="/Recipes" state={{ ingredients: checkedIngredients }}>
+                <Button variant="contained" color="primary" className="mt-5">
+                    Find recipes
+                </Button>
+            </Link>
+        </div >
     )
 }
 

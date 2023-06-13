@@ -35,8 +35,8 @@ function AddIngredient({ refresh }: Props) {
             ? <div className={getStyle(styles, "row")}>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "red_circle")} onClick={() => setAdding(!adding)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" className={getStyle(styles, "icon")}>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className={getStyle(styles, "icon")}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
 
                     </button>
@@ -52,22 +52,22 @@ function AddIngredient({ refresh }: Props) {
                     </Select>
                 </div>
                 <div className={getStyle(styles, "rowitem2")}>
-                    <TextField  label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
+                    <TextField label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
                 </div>
                 <div className={getStyle(styles, "rowitem3")}>
                     <TextField label="Days to Expiry" onChange={e => setExpiry(parseInt(e.target.value))} />
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "green_tick")} onClick={addToFridge}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke={"white"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke={"white"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     </button>
                 </div>
             </div>
             :
             <div className={getStyle(styles, "row")}>
                 <button className={getStyle(styles, "green_circle")} onClick={() => setAdding(!adding)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" className={getStyle(styles, "icon")}>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className={getStyle(styles, "icon")}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
 
                 </button>
