@@ -90,7 +90,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
     const noIngredientsMessage =
         <Stack direction="row" spacing={1} alignItems="center">
             {disabledButton}
-            <Typography>Select at least 1 recipe to generate recipes</Typography>
+            <Typography>Select at least 1 ingredient to generate recipes</Typography>
         </Stack>
     return (
         <div className={getStyle(styles, "container")}>
