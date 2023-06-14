@@ -6,6 +6,7 @@ import AddIngredient from "./AddIngredient";
 import ViewSwitch from "./ViewSwitch";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import DateSwitch from "./DateSwitch";
 
 interface Props {
     ingredients: Ingredient[];
@@ -29,7 +30,7 @@ function sortIngredientsByExpiry(ingredients: Ingredient[]) {
     });
 }
 
-function categoriseView(ingredients: Ingredient[], refresh: () => void, updateCheckbox: (ingredientId: number, checked: boolean) => void) {
+function categoriseView(ingredients: Ingredient[], refresh: () => void, updateCheckbox: (ingredientId: number, checked: boolean) => void, dayView: boolean) {
     const groupedIngredients = groupIngredientsByCategory(ingredients);
     const rows: ReactNode[] = [];
     for (const key in groupedIngredients) {
@@ -40,19 +41,19 @@ function categoriseView(ingredients: Ingredient[], refresh: () => void, updateCh
         sortIngredientsByExpiry(ingredients);
 
         ingredients.forEach(element => {
-            rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} handleOnChange={updateCheckbox} />);
+            rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} handleOnChange={updateCheckbox} dayView={dayView} />);
         });
     }
 
     return rows;
 }
 
-function sortView(ingredients: Ingredient[], refresh: () => void, updateCheckbox: (ingredientId: number, checked: boolean) => void) {
+function sortView(ingredients: Ingredient[], refresh: () => void, updateCheckbox: (ingredientId: number, checked: boolean) => void, dayView: boolean) {
     sortIngredientsByExpiry(ingredients);
 
     const rows: ReactNode[] = [];
     ingredients.forEach(element => {
-        rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} handleOnChange={updateCheckbox} />);
+        rows.push(<IngredientRow ingredient={element} refresh={refresh} key={element.id} handleOnChange={updateCheckbox} dayView={dayView} />);
     });
 
     return rows;
@@ -60,6 +61,7 @@ function sortView(ingredients: Ingredient[], refresh: () => void, updateCheckbox
 
 function FridgeContents({ ingredients, refresh }: Props) {
     const [categoryView, setCategoryView] = useState(true);
+    const [dayView, setDayView] = useState(true);
     const [checkedValues, setCheckedValues] = useState<{ [id: number]: boolean }>([]);
 
     function updateCheckbox(ingredientId: number, checked: boolean) {
@@ -68,7 +70,9 @@ function FridgeContents({ ingredients, refresh }: Props) {
         setCheckedValues(newValues);
     }
 
-    const rows: ReactNode[] = categoryView ? categoriseView(ingredients, refresh, updateCheckbox) : sortView(ingredients, refresh, updateCheckbox);
+    const rows: ReactNode[] = categoryView ?
+        categoriseView(ingredients, refresh, updateCheckbox, dayView)
+        : sortView(ingredients, refresh, updateCheckbox, dayView);
     console.log(checkedValues);
 
     const checkedIngredients = ingredients.filter((ingredient) => checkedValues[ingredient.id]);
@@ -77,6 +81,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
         <div className={getStyle(styles, "container")}>
             <AddIngredient refresh={refresh} />
             <ViewSwitch change={setCategoryView} />
+            <DateSwitch change={setDayView} />
             <table className={getStyle(styles, "table")}>
                 <tbody>{rows}</tbody>
             </table>
