@@ -3,16 +3,18 @@ import axios from "axios";
 const getBaseUrl = () => {
   let url;
   switch (process.env.NODE_ENV) {
-    case 'production':
+    case "production":
       url = "https://drp23.herokuapp.com";
       break;
-    case 'development':
+    case "development":
     default:
-      url = "http://localhost:5000";
+      url = "http://127.0.0.1:5000";
   }
 
+  // http://127.0.0.1:5000 for website
+
   return url;
-}
+};
 
 const client = axios.create({
   baseURL: getBaseUrl(),

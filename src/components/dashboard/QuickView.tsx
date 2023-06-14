@@ -24,10 +24,12 @@ function QuickView() {
 
   ingredients.forEach((ingredient) => {
     rings.push(
-      <QuickViewIngredient key={ingredient.name+ingredient.expiry} ingredient={ingredient} />
+      <QuickViewIngredient
+        key={ingredient.name + ingredient.expiry + Math.random()}
+        ingredient={ingredient}
+      />
     );
   });
-
 
   return (
     <div className={getStyle(styles, "container")}>
