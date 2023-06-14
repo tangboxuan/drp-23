@@ -2,8 +2,6 @@ import { useState } from "react";
 import getStyle from "../../Styles";
 import api from "../../api";
 import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
-import Broccoli from "../../assets/broccoli.png";
-import Kiwi from "../../assets/kiwi.png";
 import { Checkbox, TextField } from "@mui/material";
 
 interface Props {
@@ -13,12 +11,7 @@ interface Props {
     dayView: boolean;
 }
 
-const images: { [key: string]: string } = {
-    "Broccoli": Broccoli,
-    "Kiwi": Kiwi
-}
-
-function IngredientRow({ ingredient, refresh, handleOnChange, dayView }: Props) {
+function IngredientRow({ ingredient, refresh, handleOnChange }: Props) {
 
 
     const deleteIngredient = (id: number) => {
@@ -55,7 +48,7 @@ function IngredientRow({ ingredient, refresh, handleOnChange, dayView }: Props) 
         <tr className={[getStyle(styles, "row"), bgColour].join(" ")}>
             <td className={getStyle(styles, "leftEdge")}>
                 <div className={getStyle(styles, "circle")}>
-                    <img className={getStyle(styles, "ingredient")} src={images[ingredient.name]} alt="" />
+                    <img className={getStyle(styles, "ingredient")} src={"http://spoonacular.com/cdn/ingredients_100x100/"+ingredient.image} alt="" />
                 </div>
             </td>
             <td>x</td><td> <>{modifying ? <TextField value={newQuantity} className={getStyle(styles, "edit")} size="small" onChange={e => setNewQuantity(e.target.value)}></TextField> : newQuantity}</></td>

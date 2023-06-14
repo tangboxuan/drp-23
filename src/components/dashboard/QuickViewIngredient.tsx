@@ -1,6 +1,5 @@
 import getStyle from "../../Styles";
 import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
-import images from "../../util/Images";
 
 interface Props {
   ingredient: Ingredient;
@@ -11,7 +10,7 @@ function QuickViewIngredient({ ingredient }: Props) {
 
   return (
     <div className={[colour, getStyle(styles, "container")].join(" ")}>
-      <img className={getStyle(styles, "ingredient")} src={images[ingredient.name]} alt="" />
+      <img className={getStyle(styles, "ingredient")} src={"http://spoonacular.com/cdn/ingredients_100x100/"+ingredient.image} alt="" />
     </div>
   );
 }

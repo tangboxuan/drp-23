@@ -14,7 +14,7 @@ def json(i: ingredients.Ingredient) -> dict:
 
 
 def add(data):
-    ingredients.add(data["name"], data["quantity"],
+    ingredients.add(data["name"].capitalize(), data["quantity"],
                     data["image"], data["category"], 
                     datetime.fromisoformat(data["expiry"]))
 

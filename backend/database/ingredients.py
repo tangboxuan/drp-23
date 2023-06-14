@@ -12,7 +12,7 @@ class Ingredient(db.Model):
 
 
 def init():
-    db.session.add(Ingredient(name="Broccoli", quantity=5, image="Brocolli", category="Vegetables", expiry=date.today() + timedelta(days=5)))
+    db.session.add(Ingredient(name="Broccoli", quantity=5, image="broccoli.jpg", category="Vegetables", expiry=date.today() + timedelta(days=5)))
     db.session.commit()
 
 
