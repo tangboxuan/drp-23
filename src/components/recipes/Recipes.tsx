@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import fridgeApi from "../../api"
 // import recipesApi from "./RecipesApi"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { recipeDetails, recipeSummaries } from "./SampleRecipes";
 import RecipeCard from "./RecipeCard";
 import getStyle from "../../Styles";
@@ -12,16 +12,21 @@ import getStyle from "../../Styles";
 function Recipes() {
     const [ingredients, setIngredients] = useState<Ingredient[]>([]);
     const location = useLocation();
-    console.log(location);
-    console.log(location.state);
-    if (location.state !== null) {
-        setIngredients(location.state?.ingredients)
-    } else if (ingredients.length === 0) {
-        // get all ingredients from the fridge that the user has
-        fridgeApi.get("/get-fridge").then((response) => {
-            setIngredients(response.data);
-        });
-    }
+
+
+    useEffect(() => {
+        console.log("useEffect");
+        if (location.state !== null) {
+            console.log("getting ingredients from location");
+            setIngredients(location.state?.ingredients)
+        } else if (ingredients.length === 0) {
+            // get all ingredients from the fridge that the user has
+            console.log("getting ingredients from fridge");
+            fridgeApi.get("/get-fridge").then((response) => {
+                setIngredients(response.data);
+            });
+        }
+    }, []);
 
     console.log(ingredients);
     const names = new Set<string>(ingredients.map((ingredient) => ingredient.name))

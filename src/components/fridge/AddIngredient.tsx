@@ -14,7 +14,7 @@ function AddIngredient({ refresh }: Props) {
     const [adding, setAdding] = useState(false);
     const [ingredient, setIngredient] = useState("");
     const [quantity, setQuantity] = useState(0);
-    const [expiry, setExpiry] = useState<Date|null>(new Date());
+    const [expiry, setExpiry] = useState<Date | null>(new Date());
 
     const addToFridge = () => {
         api.post("/add-to-fridge", {
@@ -43,20 +43,20 @@ function AddIngredient({ refresh }: Props) {
                     </button>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
-                <FormControl fullWidth>
-                    <InputLabel id="ingredient-label">Ingredient</InputLabel>
-                    <Select
-                        fullWidth
-                        label="Ingredient"
-                        labelId="ingredient-label"
-                        onChange={(e: SelectChangeEvent<string>) => setIngredient(e.target.value)}
-                    >
-                        <MenuItem value={"Broccoli"}>Broccoli</MenuItem>
-                        <MenuItem value={"Kiwi"}>Kiwi</MenuItem>
-                    </Select>
-                    <TextField  fullWidth label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
-                    <DatePicker onChange={(v: Date|null) => setExpiry(v)}/>
-                </FormControl>
+                    <FormControl fullWidth>
+                        <InputLabel id="ingredient-label">Ingredient</InputLabel>
+                        <Select
+                            fullWidth
+                            label="Ingredient"
+                            labelId="ingredient-label"
+                            onChange={(e: SelectChangeEvent<string>) => setIngredient(e.target.value)}
+                        >
+                            <MenuItem value={"Broccoli"}>Broccoli</MenuItem>
+                            <MenuItem value={"Kiwi"}>Kiwi</MenuItem>
+                        </Select>
+                        <TextField fullWidth label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
+                        <DatePicker onChange={(v: Date | null) => setExpiry(v)} />
+                    </FormControl>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "green_tick")} onClick={addToFridge}>
