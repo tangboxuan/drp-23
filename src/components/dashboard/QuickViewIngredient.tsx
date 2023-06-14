@@ -25,7 +25,6 @@ function QuickViewIngredient({ ingredient }: Props) {
 const styles = {
   container: [
     "border-[5px]",
-    "border-warningOrange",
     "bg-white",
     "rounded-full",
     "h-[44px]",
