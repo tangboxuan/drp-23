@@ -55,6 +55,7 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         {recipeSummary.title}
                     </Typography>
+                    <img src={recipeDetails.image} alt="" />
                     Ingredients:
                     <List sx={{
                         listStyleType: 'disc', pl: 4
