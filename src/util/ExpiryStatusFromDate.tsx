@@ -1,5 +1,4 @@
 function expiryColourFromDate(daysTillExpiry: number): string {
-  console.log(daysTillExpiry);
   if (daysTillExpiry <= LOWER_BOUNDARY) {
     return "expirationRed";
   } else if (daysTillExpiry <= MEDIUM_BOUNDARY) {

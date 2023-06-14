@@ -7,6 +7,7 @@ interface Props {
 
 function QuickViewIngredient({ ingredient }: Props) {
   const colour = "border-" + expiryColourFromDate(ingredient.expiry);
+  console.log(getStyle(styles, "container"), colour);
 
   return (
     <div className={[getStyle(styles, "container"), colour].join(" ")}>
@@ -24,6 +25,9 @@ function QuickViewIngredient({ ingredient }: Props) {
 const styles = {
   container: [
     "border-[5px]",
+    "border-warningOrange",
+    "border-expirationRed",
+    "border-safeGreen",
     "bg-white",
     "rounded-full",
     "h-[44px]",

@@ -23,6 +23,8 @@ function QuickView() {
   });
 
   ingredients.forEach((ingredient) => {
+    console.log(ingredient.name);
+    console.log(ingredient);
     rings.push(
       <QuickViewIngredient
         key={ingredient.name + ingredient.expiry + Math.random()}
