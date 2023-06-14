@@ -6,11 +6,10 @@ interface Props {
 }
 
 function QuickViewIngredient({ ingredient }: Props) {
-  const colour = "border-" + expiryColourFromDate(ingredient.expiry);
-  console.log(getStyle(styles, "container"), colour);
+  const colour: string = "ctn" + expiryColourFromDate(ingredient.expiry);
 
   return (
-    <div className={[getStyle(styles, "container"), colour].join(" ")}>
+    <div className={[getStyle(styles, colour), colour].join(" ")}>
       <img
         className={getStyle(styles, "ingredient")}
         src={
@@ -23,8 +22,33 @@ function QuickViewIngredient({ ingredient }: Props) {
 }
 
 const styles = {
-  container: [
+  ctnsafeGreen: [
     "border-[5px]",
+    "border-safeGreen",
+    "bg-white",
+    "rounded-full",
+    "h-[44px]",
+    "w-[44px]",
+    "flex",
+    "justify-center",
+    "items-center",
+    "mx-[10px]",
+  ],
+  ctnwarningOrange: [
+    "border-[5px]",
+    "border-warningOrange",
+    "bg-white",
+    "rounded-full",
+    "h-[44px]",
+    "w-[44px]",
+    "flex",
+    "justify-center",
+    "items-center",
+    "mx-[10px]",
+  ],
+  ctnexpirationRed: [
+    "border-[5px]",
+    "border-expirationRed",
     "bg-white",
     "rounded-full",
     "h-[44px]",
