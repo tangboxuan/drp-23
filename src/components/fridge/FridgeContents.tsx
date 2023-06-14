@@ -5,7 +5,7 @@ import getStyle from "../../Styles";
 import AddIngredient from "./AddIngredient";
 import ViewSwitch from "./ViewSwitch";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import DateSwitch from "./DateSwitch";
 
 interface Props {
@@ -76,7 +76,22 @@ function FridgeContents({ ingredients, refresh }: Props) {
     console.log(checkedValues);
 
     const checkedIngredients = ingredients.filter((ingredient) => checkedValues[ingredient.id]);
+    const findRecipesButton =
+        <Link to="/Recipes" state={{ ingredients: checkedIngredients }}>
+            <Button variant="contained" color="primary" className="mt-5">
+                Find recipes
+            </Button>
+        </Link>
+    const disabledButton =
+        <Button variant="contained" color="primary" className="mt-5" disabled>
+            Find recipes
+        </Button>
 
+    const noIngredientsMessage =
+        <Stack direction="row" spacing={1} alignItems="center">
+            {disabledButton}
+            <Typography>Select at least 1 recipe to generate recipes</Typography>
+        </Stack>
     return (
         <div className={getStyle(styles, "container")}>
             <AddIngredient refresh={refresh} />
@@ -85,11 +100,9 @@ function FridgeContents({ ingredients, refresh }: Props) {
             <table className={getStyle(styles, "table")}>
                 <tbody>{rows}</tbody>
             </table>
-            <Link to="/Recipes" state={{ ingredients: checkedIngredients }}>
-                <Button variant="contained" color="primary" className="mt-5">
-                    Find recipes
-                </Button>
-            </Link>
+
+            {checkedIngredients.length > 0 ? findRecipesButton : noIngredientsMessage}
+
         </div >
     )
 }
