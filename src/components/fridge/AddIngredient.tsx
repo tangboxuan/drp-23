@@ -16,9 +16,9 @@ interface Props {
 
 function AddIngredient({ refresh }: Props) {
     const [adding, setAdding] = useState(false);
-    const [ingredient, setIngredient] = useState<spoonacularIngredient|null>(null);
+    const [ingredient, setIngredient] = useState<spoonacularIngredient | null>(null);
     const [quantity, setQuantity] = useState(0);
-    const [expiry, setExpiry] = useState<Date|null>(new Date());
+    const [expiry, setExpiry] = useState<Date | null>(new Date());
     const [autocomplete, setAutocomplete] = useState<spoonacularIngredient[]>([]);
 
     const addToFridge = () => {
@@ -40,7 +40,7 @@ function AddIngredient({ refresh }: Props) {
         }
     }
 
-    const searchIngredient = (i:string) => {
+    const searchIngredient = (i: string) => {
         recipeApi.get("/food/ingredients/autocomplete", {
             params: {
                 query: i,
@@ -63,24 +63,25 @@ function AddIngredient({ refresh }: Props) {
                     </button>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
-                <FormControl fullWidth>
-                    <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        value={ingredient}
-                        options={autocomplete}
-                        getOptionLabel={(option) => option.name}
-                        onInputChange={(_, v, r) =>{
-                            if (r === 'input') {
-                              searchIngredient(v);
+                    <FormControl fullWidth>
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            value={ingredient}
+                            options={autocomplete}
+                            getOptionLabel={(option) => option.name}
+                            onInputChange={(_, v, r) => {
+                                if (r === 'input') {
+                                    searchIngredient(v);
+                                }
+                            }
+                            }
+                            onChange={(_, v) => {
+                                setIngredient(v);
                             }}
-                        }
-                        onChange= {(_, v) => {
-                            setIngredient(v);
-                        }}
-                        renderInput={(params) => <TextField {...params} label="Ingredient" />}
-                    />
-                    {/* <InputLabel id="ingredient-label">Ingredient</InputLabel>
+                            renderInput={(params) => <TextField {...params} label="Ingredient" />}
+                        />
+                        {/* <InputLabel id="ingredient-label">Ingredient</InputLabel>
                     <Select
                         fullWidth
                         label="Ingredient"
@@ -90,10 +91,10 @@ function AddIngredient({ refresh }: Props) {
                         <MenuItem value={"Broccoli"}>Broccoli</MenuItem>
                         <MenuItem value={"Kiwi"}>Kiwi</MenuItem>
                     </Select> */}
-                    {/* <TextField fullWidth label="Ingredient" onChange={e => setIngredient(e.target.value)} /> */}
-                    <TextField  fullWidth label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
-                    <DatePicker onChange={(v: Date|null) => setExpiry(v)}/>
-                </FormControl>
+                        {/* <TextField fullWidth label="Ingredient" onChange={e => setIngredient(e.target.value)} /> */}
+                        <TextField fullWidth label="Quantity" onChange={e => setQuantity(parseInt(e.target.value))} />
+                        <DatePicker onChange={(v: Date | null) => setExpiry(v)} />
+                    </FormControl>
                 </div>
                 <div className={getStyle(styles, "rowitem")}>
                     <button className={getStyle(styles, "green_tick")} onClick={addToFridge}>
@@ -102,15 +103,15 @@ function AddIngredient({ refresh }: Props) {
                 </div>
             </div>
             :
-            <div className={getStyle(styles, "row")}>
-                <button className={getStyle(styles, "green_circle")} onClick={() => setAdding(!adding)}>
+            <button className={getStyle(styles, "row")} onClick={() => setAdding(!adding)}>
+                <div className={getStyle(styles, "green_circle")}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className={getStyle(styles, "icon")}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
 
-                </button>
+                </div>
                 <div className={getStyle(styles, "text")}>Add an item to your fridge</div>
-            </div>
+            </button>
     )
 }
 
