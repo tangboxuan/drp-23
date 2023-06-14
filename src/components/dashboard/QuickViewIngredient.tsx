@@ -1,5 +1,6 @@
 import getStyle from "../../Styles";
 import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
+import * as misc from "../../util/Miscellaneous";
 
 interface Props {
   ingredient: Ingredient;
@@ -9,7 +10,7 @@ function QuickViewIngredient({ ingredient }: Props) {
   const colour: string = "ctn" + expiryColourFromDate(ingredient.expiry);
 
   return (
-    <div className={[getStyle(styles, colour), colour].join(" ")}>
+    <div className={getStyle(styles, colour)}>
       <img
         className={getStyle(styles, "ingredient")}
         src={
@@ -22,42 +23,9 @@ function QuickViewIngredient({ ingredient }: Props) {
 }
 
 const styles = {
-  ctnsafeGreen: [
-    "border-[5px]",
-    "border-safeGreen",
-    "bg-white",
-    "rounded-full",
-    "h-[44px]",
-    "w-[44px]",
-    "flex",
-    "justify-center",
-    "items-center",
-    "mx-[10px]",
-  ],
-  ctnwarningOrange: [
-    "border-[5px]",
-    "border-warningOrange",
-    "bg-white",
-    "rounded-full",
-    "h-[44px]",
-    "w-[44px]",
-    "flex",
-    "justify-center",
-    "items-center",
-    "mx-[10px]",
-  ],
-  ctnexpirationRed: [
-    "border-[5px]",
-    "border-expirationRed",
-    "bg-white",
-    "rounded-full",
-    "h-[44px]",
-    "w-[44px]",
-    "flex",
-    "justify-center",
-    "items-center",
-    "mx-[10px]",
-  ],
+  ctnsafeGreen: misc.ctnsafeGreen,
+  ctnwarningOrange: misc.ctnwarningOrange,
+  ctnexpirationRed: misc.ctnexpirationRed,
   ingredient: ["h-[21px]", "w-[21px]"],
   expiryStatus: [],
 };
