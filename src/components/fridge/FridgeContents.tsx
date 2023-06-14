@@ -90,7 +90,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
 }
 
 const styles = {
-    container: ["flex", "flex-col", "h-full", "w-full","pb-20", "p-10", "mt-5"],
+    container: ["flex", "flex-col", "h-full", "w-full", "pt-10", "pl-10", "pr-10", "mt-5"],
     table: ["border-separate", "border-spacing-y-3", "table-auto"]
 }
 

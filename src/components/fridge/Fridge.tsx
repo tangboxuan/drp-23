@@ -25,13 +25,15 @@ function Fridge() {
       <div className={getStyle(styles, "body")}>
         <FridgeContents ingredients={ingredients} refresh={refreshIngredients}/>
       </div>
-      <Footer currentPage={CurrentPage.Fridge} />
+      <div>
+        <Footer currentPage={CurrentPage.Fridge} />
+      </div>
     </>
   );
 }
 
 const styles = {
-  body: ["overflow-y-scroll", "max-h-screen"]
+  body: ["overflow-y-scroll", "max-h-screen", "pb-20"]
 }
 
 export default Fridge;

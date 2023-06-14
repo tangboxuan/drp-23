@@ -89,7 +89,7 @@ function Recipes() {
 }
 
 const styles = {
-    container: ["flex", "flex-col", "h-full", "w-full", "p-10", "mt-5"],
+    container: ["overflow-y-scroll", "max-h-screen", "pb-20", "flex", "flex-col", "h-full", "w-full", "p-10", "mt-5"],
     table: ["border-separate", "border-spacing-y-3", "table-auto"],
     row: ["text-xl"],
     title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
