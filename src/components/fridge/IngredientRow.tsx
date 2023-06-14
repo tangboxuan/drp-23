@@ -11,7 +11,7 @@ interface Props {
     dayView: boolean;
 }
 
-function IngredientRow({ ingredient, refresh, handleOnChange }: Props) {
+function IngredientRow({ ingredient, refresh, handleOnChange, dayView }: Props) {
 
 
     const deleteIngredient = (id: number) => {
