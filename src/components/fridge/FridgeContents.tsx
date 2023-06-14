@@ -95,6 +95,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
     return (
         <div className={getStyle(styles, "container")}>
             <AddIngredient refresh={refresh} />
+            <h1 className={getStyle(styles, "title")}>Currently in your pantry:</h1>
             <ViewSwitch change={setCategoryView} />
             <DateSwitch change={setDayView} />
             <table className={getStyle(styles, "table")}>
@@ -109,7 +110,8 @@ function FridgeContents({ ingredients, refresh }: Props) {
 
 const styles = {
     container: ["flex", "flex-col", "h-full", "w-full", "pt-10", "pl-10", "pr-10", "mt-5"],
-    table: ["border-separate", "border-spacing-y-3", "table-auto"]
+    table: ["border-separate", "border-spacing-y-3", "table-auto"],
+    title: ["text-2xl", "font-bold", "tracking-wide"],
 }
 
 export default FridgeContents;
