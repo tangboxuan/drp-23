@@ -33,7 +33,7 @@ interface RecipeDetails {
     occasions: string[];
     winePairing: object;
     instructions: string;
-    analyzedInstructions: object[];
+    analyzedInstructions: Instruction[];
     report: string | null;
     tips: any;
     openLicense: number;
