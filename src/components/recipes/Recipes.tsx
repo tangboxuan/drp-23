@@ -29,7 +29,7 @@ function Recipes() {
     }, []);
 
     console.log(ingredients);
-    const names = new Set<string>(ingredients.map((ingredient) => ingredient.name))
+    const names = Array.from(new Set<string>(ingredients.map((ingredient) => ingredient.name)).values()).join(", ");
 
     // api.get("/recipes/findByIngredients", {
     //     params: {
@@ -68,17 +68,12 @@ function Recipes() {
                 <p>Ingredients in use: {names}</p>
                 <table className={getStyle(styles, "table")}>
                     <tbody>
-                        <tr className={getStyle(styles, "row")}>
-                            <th colSpan={4}>
-                                Recipes you can make
-                            </th>
-                        </tr >
+                        <tr>
+                            <th colSpan={2}>Recipes you can make now</th>
+                            <th>Time (mins)</th>
+                            <th>$ per serving</th>
+                        </tr>
                         {(fridgeOnly.length > 0) ? fridgeOnly : <tr><td colSpan={4}>No recipes found</td></tr>}
-                        {/* <tr className={getStyle(styles, "row")}>
-                            <th colSpan={4}>
-                                Recipes you can make with additional ingredients
-                            </th>
-                        </tr > */}
                         <tr>
                             <th colSpan={2}>Recipes you can make with additional ingredients</th>
                             <th>Time (mins)</th>
