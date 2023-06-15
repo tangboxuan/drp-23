@@ -69,7 +69,7 @@ function App() {
       <Router>
         <div className={getStyle(styles, "container")}>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Dashboard ingredients={ingredients}/>} />
             <Route path={CurrentPage.Fridge} element={<Fridge ingredients={ingredients} refreshIngredients={refreshIngredients}/>} />
             <Route path={CurrentPage.Home} element={<Dashboard ingredients={ingredients}/>} />
             <Route path={CurrentPage.Recipes} element={<Recipes />} />
