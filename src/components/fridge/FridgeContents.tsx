@@ -5,7 +5,6 @@ import getStyle from "../../Styles";
 import AddIngredient from "./AddIngredient";
 import ViewSwitch from "./ViewSwitch";
 import { Link } from "react-router-dom";
-import { Stack, Typography } from "@mui/material";
 import DateSwitch from "./DateSwitch";
 
 interface Props {
@@ -118,16 +117,19 @@ function FridgeContents({ ingredients, refresh }: Props) {
   );
 
   const disabledButton = (
-    <button disabled={true} className={getStyle(styles, "recipeDefault")}>
+    <button
+      onClick={() => alert("Select ingredients to generate recipes!")}
+      className={getStyle(styles, "recipeDefault")}
+    >
       Find Recipes
     </button>
   );
 
   const noIngredientsMessage = (
-    <Stack direction="row" spacing={1} alignItems="center">
+    <div>
       {disabledButton}
-      <Typography>Select at least 1 ingredient to generate recipes</Typography>
-    </Stack>
+      {/* <p>Select ingredients to generate recipes!</p> */}
+    </div>
   );
 
   return (
@@ -171,8 +173,8 @@ const styles = {
   ],
   table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   text: ["text-sm", "mb-3"],
-  toggleCtn: ["flex", "items-center", "mt-10", "justify-between"],
-  title: ["text-2xl", "font-bold", "tracking-wide"],
+  toggleCtn: ["flex", "items-center", "mt-6", "justify-between"],
+  title: ["text-[22px]", "font-bold", "tracking-wide", "mt-10"],
   recipeActive: [
     "flex",
     "justify-center",
