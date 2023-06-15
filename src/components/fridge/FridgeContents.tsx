@@ -114,8 +114,11 @@ function FridgeContents({ ingredients, refresh }: Props) {
   return (
     <div className={getStyle(styles, "container")}>
       <AddIngredient refresh={refresh} />
-      <ViewSwitch change={setCategoryView} />
-      <DateSwitch change={setDayView} />
+
+      <div className={getStyle(styles, "toggleCtn")}>
+        <ViewSwitch change={setCategoryView} />
+        <DateSwitch change={setDayView} />
+      </div>
       <table className={getStyle(styles, "table")}>
         <tbody>{rows}</tbody>
       </table>
@@ -140,6 +143,7 @@ const styles = {
     "mt-5",
   ],
   table: ["border-separate", "border-spacing-y-3", "table-auto"],
+  toggleCtn: ["flex", "items-center", "mt-10"],
 };
 
 export default FridgeContents;
