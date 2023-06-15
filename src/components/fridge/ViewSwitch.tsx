@@ -52,19 +52,19 @@ const styles = {
     "overflow-hidden",
   ],
   subCtnInactive: [
-    "w-[70px]",
+    "w-[73px]",
     "h-full",
     "bg-gray-200",
     "p-2",
-    "text-[9px]",
+    "text-[9.5px]",
     "font-medium",
   ],
   subCtnActive: [
-    "w-[70px]",
+    "w-[73px]",
     "h-full",
     "bg-gray-300",
     "p-2",
-    "text-[9px]",
+    "text-[9.5px]",
     "font-medium",
   ],
 };

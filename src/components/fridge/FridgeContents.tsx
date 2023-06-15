@@ -144,9 +144,9 @@ const styles = {
     "pr-10",
     "mt-5",
   ],
-  table: ["border-separate", "border-spacing-y-3", "table-auto"],
+  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   text: ["text-sm", "mb-3"],
-  toggleCtn: ["flex", "items-center", "mt-10", "justify-around"],
+  toggleCtn: ["flex", "items-center", "mt-10", "justify-between"],
 };
 
 export default FridgeContents;
