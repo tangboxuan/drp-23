@@ -38,7 +38,7 @@ const styles = {
   container: ["flex", "flex-col", "h-full", "w-full", "mt-5"],
   body: ["overflow-y-scroll", "max-h-screen", "pb-24", "px-10"],
   addWrapper: ["flex", "w-full", "justify-center", "items-center", "mt-5"],
-  title: ["text-[22px]", "font-bold", "tracking-wide"],
+  title: ["text-[22px]", "font-bold", "tracking-wide", "mt-9"],
 };
 
 export default Fridge;
