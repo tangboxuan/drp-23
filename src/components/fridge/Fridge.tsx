@@ -35,17 +35,8 @@ function Fridge({ ingredients, refreshIngredients }: Props) {
 }
 
 const styles = {
-  container: [
-    "flex",
-    "flex-col",
-    "h-full",
-    "w-full",
-    "pt-10",
-    "pl-10",
-    "pr-10",
-    "mt-5",
-  ],
-  body: ["overflow-y-scroll", "max-h-screen", "pb-20"],
+  container: ["flex", "flex-col", "h-full", "w-full", "mt-5"],
+  body: ["overflow-y-scroll", "max-h-screen", "pb-24", "px-10"],
   addWrapper: ["flex", "w-full", "justify-center", "items-center", "mt-5"],
   title: ["text-[22px]", "font-bold", "tracking-wide"],
 };
