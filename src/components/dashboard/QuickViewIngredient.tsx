@@ -1,33 +1,32 @@
 import getStyle from "../../Styles";
 import expiryColourFromDate from "../../util/ExpiryStatusFromDate";
+import * as misc from "../../util/Miscellaneous";
 
 interface Props {
   ingredient: Ingredient;
 }
 
 function QuickViewIngredient({ ingredient }: Props) {
-  const colour = "border-" + expiryColourFromDate(ingredient.expiry);
+  const colour: string = "ctn" + expiryColourFromDate(ingredient.expiry);
 
   return (
-    <div className={[colour, getStyle(styles, "container")].join(" ")}>
-      <img className={getStyle(styles, "ingredient")} src={"http://spoonacular.com/cdn/ingredients_100x100/"+ingredient.image} alt="" />
+    <div className={getStyle(styles, colour)}>
+      <img
+        className={getStyle(styles, "ingredient")}
+        src={
+          "http://spoonacular.com/cdn/ingredients_100x100/" + ingredient.image
+        }
+        alt=""
+      />
     </div>
   );
 }
 
 const styles = {
-  container: [
-    "border-[5px]",
-    "bg-white",
-    "rounded-full",
-    "h-[44px]",
-    "w-[44px]",
-    "flex",
-    "justify-center",
-    "items-center",
-    "mx-[10px]",
-  ],
-  ingredient: ["h-[21px]", "w-[21px]"],
+  ctnsafeGreen: misc.ctnsafeGreen,
+  ctnwarningOrange: misc.ctnwarningOrange,
+  ctnexpirationRed: misc.ctnexpirationRed,
+  ingredient: ["h-[25px]", "w-[25px]"],
   expiryStatus: [],
 };
 

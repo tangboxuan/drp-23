@@ -1,29 +1,21 @@
-import { useState, useEffect } from "react";
-
 import { CurrentPage } from "../../util/CurrentPage";
 import Footer from "../shared/Footer";
 import FridgeContents from "./FridgeContents";
-import api from "../../api"
 import getStyle from "../../Styles";
 
-function Fridge() {
+interface Props {
+  ingredients: Ingredient[];
+  refreshIngredients: () => void;
+}
 
-  const [ingredients, setIngredients] = useState([]);
-
-  const refreshIngredients = () => {
-    api.get("/get-fridge").then((response) => {
-      setIngredients(response.data);
-    });
-  };
-
-  useEffect(() => {
-    refreshIngredients();
-  }, []);
-
+function Fridge({ ingredients, refreshIngredients }: Props) {
   return (
     <>
       <div className={getStyle(styles, "body")}>
-        <FridgeContents ingredients={ingredients} refresh={refreshIngredients}/>
+        <FridgeContents
+          ingredients={ingredients}
+          refresh={refreshIngredients}
+        />
       </div>
       <div>
         <Footer currentPage={CurrentPage.Fridge} />
@@ -33,7 +25,7 @@ function Fridge() {
 }
 
 const styles = {
-  body: ["overflow-y-scroll", "max-h-screen", "pb-20"]
-}
+  body: ["overflow-y-scroll", "max-h-screen", "pb-20"],
+};
 
 export default Fridge;

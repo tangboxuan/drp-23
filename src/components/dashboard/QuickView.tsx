@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
 import getStyle from "../../Styles";
 import QuickViewIngredient from "./QuickViewIngredient";
-import api from "../../api";
 
-function QuickView() {
-  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+interface Props {
+  ingredients: Ingredient[];
+}
 
-  const refreshIngredients = () => {
-    api.get("/get-fridge").then((response) => {
-      setIngredients(response.data);
-    });
-  };
+function QuickView({ingredients}:Props) {
 
-  useEffect(() => {
-    refreshIngredients();
-  }, []);
 
   const rings: React.ReactNode[] = [];
 
@@ -24,10 +16,12 @@ function QuickView() {
 
   ingredients.forEach((ingredient) => {
     rings.push(
-      <QuickViewIngredient key={ingredient.name+ingredient.expiry} ingredient={ingredient} />
+      <QuickViewIngredient
+        key={ingredient.name + ingredient.expiry + Math.random()}
+        ingredient={ingredient}
+      />
     );
   });
-
 
   return (
     <div className={getStyle(styles, "container")}>

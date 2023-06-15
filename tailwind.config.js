@@ -19,6 +19,7 @@ export default {
         safeGreen: "#3D8A00",
         selectedRed: "#FF3434",
         warningOrange: "#F16B0A",
+        footerGray: "#b9bec7",
       },
     },
   },
