@@ -126,9 +126,13 @@ function FridgeContents({ ingredients, refresh }: Props) {
 
       <Link to="/Recipes" state={{ ingredients: checkedIngredients }}>
         {checkedIngredients.length === 0 ? (
-          <div className={getStyle(styles, "recipeDefault")}>Find Recipes</div>
+          <button disabled={true} className={getStyle(styles, "recipeDefault")}>
+            Find Recipes
+          </button>
         ) : (
-          <div className={getStyle(styles, "recipeActive")}>Find Recipes</div>
+          <button className={getStyle(styles, "recipeActive")}>
+            Find Recipes
+          </button>
         )}
       </Link>
     </div>
