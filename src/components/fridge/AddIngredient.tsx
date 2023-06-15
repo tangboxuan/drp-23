@@ -25,7 +25,7 @@ const theme = createTheme({
     MuiInputBase: {
       styleOverrides: {
         input: {
-          fontSize: "11px",
+          fontSize: "12px",
           fontWeight: "500",
         },
       },
@@ -80,7 +80,7 @@ function AddIngredient({ refresh }: Props) {
     <div className={getStyle(styles, "addingRow")}>
       <FormControl>
         <Autocomplete
-          sx={{ transform: "scale(0.8)", width: "8rem" }}
+          sx={{ transform: "scale(0.8)", width: "17rem" }}
           disablePortal
           id="combo-box-demo"
           value={ingredient}
@@ -101,7 +101,7 @@ function AddIngredient({ refresh }: Props) {
       <TextField
         sx={{
           transform: "scale(0.8)",
-          width: "8rem",
+          width: "17rem",
           textAlign: "center",
           marginBottom: "5px",
         }}
@@ -111,7 +111,7 @@ function AddIngredient({ refresh }: Props) {
 
       <ThemeProvider theme={theme}>
         <DatePicker
-          className="w-[103px]"
+          className="w-[218px]"
           onChange={(v: Date | null) => setExpiry(v)}
         />
       </ThemeProvider>
@@ -180,19 +180,19 @@ function AddIngredient({ refresh }: Props) {
 }
 
 const styles = {
-  btnCtn: ["flex", "justify-center", "items-center", "mt-4"],
+  btnCtn: ["flex", "w-full", "justify-center", "items-center", "mt-4"],
   textField: ["border-none"],
   form: ["mx-2"],
   row: [
     "flex",
     "items-center",
-    "px-5",
-    "py-[10px]",
+    "px-1",
+    "py-[15px]",
     "bg-backgroundBeige",
     "justify-center",
     "rounded-lg",
     "shadow-md",
-    "scale-110",
+    "w-full",
   ],
   addingRow: [
     "flex",
@@ -203,11 +203,12 @@ const styles = {
     "rounded-lg",
     "items-center",
     "shadow-md",
+    "w-full",
   ],
   rowitem: ["m-1"],
   rowitem2: ["m-1", "w-30"],
   rowitem3: ["m-1", "w-40"],
-  text: ["items-center", "justify-center", "ml-6", "flex", "text-sm"],
+  text: ["items-center", "justify-center", "ml-6", "flex", "text-md"],
   greenCircle: [
     "rounded-full",
     "flex",
@@ -237,7 +238,7 @@ const styles = {
     "h-[30px]",
     "w-[30px]",
     "bg-expirationRed",
-    "mr-1",
+    "mr-8",
   ],
   icon: ["h-6", "w-6"],
   addrow: [

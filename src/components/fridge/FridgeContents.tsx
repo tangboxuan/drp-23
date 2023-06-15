@@ -5,7 +5,6 @@ import getStyle from "../../Styles";
 import AddIngredient from "./AddIngredient";
 import ViewSwitch from "./ViewSwitch";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
 import DateSwitch from "./DateSwitch";
 
 interface Props {
@@ -121,7 +120,13 @@ function FridgeContents({ ingredients, refresh }: Props) {
         <DateSwitch change={setDayView} />
       </div>
       <table className={getStyle(styles, "table")}>
-        <tbody>{rows}</tbody>
+        {ingredients.length === 0 ? (
+          <p className="mt-3 text-center">
+            Add ingredients for recipe suggestions!
+          </p>
+        ) : (
+          <tbody>{rows}</tbody>
+        )}
       </table>
 
       <Link to="/Recipes" state={{ ingredients: checkedIngredients }}>
@@ -158,7 +163,7 @@ const styles = {
     "flex",
     "justify-center",
     "items-center",
-    "mt-10",
+    "mt-8",
     "bg-blue-800",
     "rounded-lg",
     "p-3",
@@ -170,7 +175,7 @@ const styles = {
     "flex",
     "justify-center",
     "items-center",
-    "mt-10",
+    "mt-8",
     "bg-gray-400",
     "rounded-lg",
     "p-3",
