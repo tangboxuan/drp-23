@@ -190,7 +190,7 @@ const styles = {
   rowitem: ["m-1"],
   rowitem2: ["m-1", "w-30"],
   rowitem3: ["m-1", "w-40"],
-  text: ["items-center", "justify-center", "ml-5", "flex", "text-sm"],
+  text: ["items-center", "justify-center", "ml-8", "flex", "text-sm"],
   green_circle: [
     "rounded-full",
     "flex",

@@ -46,14 +46,13 @@ const styles = {
   ctn: [
     "flex",
     "rounded-lg",
-    "shadow-lg",
+    "shadow-md",
     "h-8",
     "items-center",
     "overflow-hidden",
-    "scale-95",
   ],
   subCtnInactive: [
-    "w-20",
+    "w-[70px]",
     "h-full",
     "bg-gray-200",
     "p-2",
@@ -61,7 +60,7 @@ const styles = {
     "font-medium",
   ],
   subCtnActive: [
-    "w-20",
+    "w-[70px]",
     "h-full",
     "bg-gray-300",
     "p-2",

@@ -105,7 +105,6 @@ function FridgeContents({ ingredients, refresh }: Props) {
   const rows: ReactNode[] = categoryView
     ? categoriseView(ingredients, refresh, updateCheckbox, dayView)
     : sortView(ingredients, refresh, updateCheckbox, dayView);
-  console.log(checkedValues);
 
   const checkedIngredients = ingredients.filter(
     (ingredient) => checkedValues[ingredient.id]
@@ -113,7 +112,9 @@ function FridgeContents({ ingredients, refresh }: Props) {
 
   return (
     <div className={getStyle(styles, "container")}>
-      <AddIngredient refresh={refresh} />
+      <div className={getStyle(styles, "addWrapper")}>
+        <AddIngredient refresh={refresh} />
+      </div>
 
       <div className={getStyle(styles, "toggleCtn")}>
         <ViewSwitch change={setCategoryView} />
@@ -132,6 +133,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
 }
 
 const styles = {
+  addWrapper: ["flex", "w-full", "justify-center", "items-center"],
   container: [
     "flex",
     "flex-col",
@@ -143,7 +145,8 @@ const styles = {
     "mt-5",
   ],
   table: ["border-separate", "border-spacing-y-3", "table-auto"],
-  toggleCtn: ["flex", "items-center", "mt-10"],
+  text: ["text-sm", "mb-3"],
+  toggleCtn: ["flex", "items-center", "mt-10", "justify-around"],
 };
 
 export default FridgeContents;

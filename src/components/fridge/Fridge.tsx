@@ -8,12 +8,14 @@ interface Props {
   refreshIngredients: () => void;
 }
 
-function Fridge({ingredients, refreshIngredients} : Props) {
-
+function Fridge({ ingredients, refreshIngredients }: Props) {
   return (
     <>
       <div className={getStyle(styles, "body")}>
-        <FridgeContents ingredients={ingredients} refresh={refreshIngredients}/>
+        <FridgeContents
+          ingredients={ingredients}
+          refresh={refreshIngredients}
+        />
       </div>
       <div>
         <Footer currentPage={CurrentPage.Fridge} />
@@ -23,7 +25,7 @@ function Fridge({ingredients, refreshIngredients} : Props) {
 }
 
 const styles = {
-  body: ["overflow-y-scroll", "max-h-screen", "pb-20"]
-}
+  body: ["overflow-y-scroll", "max-h-screen", "pb-20"],
+};
 
 export default Fridge;
