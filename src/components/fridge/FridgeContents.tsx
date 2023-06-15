@@ -123,10 +123,13 @@ function FridgeContents({ ingredients, refresh }: Props) {
       <table className={getStyle(styles, "table")}>
         <tbody>{rows}</tbody>
       </table>
+
       <Link to="/Recipes" state={{ ingredients: checkedIngredients }}>
-        <Button variant="contained" color="primary" className="mt-5">
-          Find recipes
-        </Button>
+        {checkedIngredients.length === 0 ? (
+          <div className={getStyle(styles, "recipeDefault")}>Find Recipes</div>
+        ) : (
+          <div className={getStyle(styles, "recipeActive")}>Find Recipes</div>
+        )}
       </Link>
     </div>
   );
@@ -147,6 +150,30 @@ const styles = {
   table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   text: ["text-sm", "mb-3"],
   toggleCtn: ["flex", "items-center", "mt-10", "justify-between"],
+  recipeActive: [
+    "flex",
+    "justify-center",
+    "items-center",
+    "mt-10",
+    "bg-blue-800",
+    "rounded-lg",
+    "p-3",
+    "text-white",
+    "w-32",
+    "font-medium",
+  ],
+  recipeDefault: [
+    "flex",
+    "justify-center",
+    "items-center",
+    "mt-10",
+    "bg-gray-400",
+    "rounded-lg",
+    "p-3",
+    "text-white",
+    "w-32",
+    "font-medium",
+  ],
 };
 
 export default FridgeContents;
