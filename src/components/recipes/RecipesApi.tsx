@@ -5,6 +5,9 @@ const getBaseUrl = () => {
     return url;
 }
 
+export const oldApiKey = "597b14fc59f64d6bbd923959a4282868"
+export const currentApiKey = "679de17395ea4fb8ab755b0c45367901"
+
 const client = axios.create({
     baseURL: getBaseUrl(),
     timeout: 30000,

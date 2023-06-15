@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import api from "../../api";
 import { DatePicker } from "@mui/x-date-pickers";
-import recipeApi from "../recipes/RecipesApi.tsx";
+import recipeApi, { currentApiKey } from "../recipes/RecipesApi.tsx";
 import { useLocation } from "react-router-dom";
 
 type spoonacularIngredient = {
@@ -49,7 +49,7 @@ function AddIngredient({ refresh }: Props) {
       setAdding(location.state?.jumpToAdd);
     }
   }, [])
-  
+
 
   const addToFridge = () => {
     if (ingredient) {
@@ -77,7 +77,7 @@ function AddIngredient({ refresh }: Props) {
       .get("/food/ingredients/autocomplete", {
         params: {
           query: i,
-          apiKey: "597b14fc59f64d6bbd923959a4282868",
+          apiKey: currentApiKey,
         },
       })
       .then((response) => {
