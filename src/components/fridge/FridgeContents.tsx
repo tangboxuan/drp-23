@@ -5,6 +5,7 @@ import getStyle from "../../Styles";
 import AddIngredient from "./AddIngredient";
 import ViewSwitch from "./ViewSwitch";
 import { Link } from "react-router-dom";
+import { Button, Stack, Typography } from "@mui/material";
 import DateSwitch from "./DateSwitch";
 
 interface Props {
@@ -108,13 +109,33 @@ function FridgeContents({ ingredients, refresh }: Props) {
   const checkedIngredients = ingredients.filter(
     (ingredient) => checkedValues[ingredient.id]
   );
+  const findRecipesButton = (
+    <button className={getStyle(styles, "recipeActive")}>
+      <Link to="/Recipes" state={{ ingredients: checkedIngredients }}>
+        Find Recipes
+      </Link>
+    </button>
+  );
+
+  const disabledButton = (
+    <button disabled={true} className={getStyle(styles, "recipeDefault")}>
+      Find Recipes
+    </button>
+  );
+
+  const noIngredientsMessage = (
+    <Stack direction="row" spacing={1} alignItems="center">
+      {disabledButton}
+      <Typography>Select at least 1 ingredient to generate recipes</Typography>
+    </Stack>
+  );
 
   return (
     <div className={getStyle(styles, "container")}>
       <div className={getStyle(styles, "addWrapper")}>
         <AddIngredient refresh={refresh} />
       </div>
-
+      <h1 className={getStyle(styles, "title")}>Currently in your pantry:</h1>
       <div className={getStyle(styles, "toggleCtn")}>
         <ViewSwitch change={setCategoryView} />
         <DateSwitch change={setDayView} />
@@ -129,17 +150,9 @@ function FridgeContents({ ingredients, refresh }: Props) {
         )}
       </table>
 
-      <Link to="/Recipes" state={{ ingredients: checkedIngredients }}>
-        {checkedIngredients.length === 0 ? (
-          <button disabled={true} className={getStyle(styles, "recipeDefault")}>
-            Find Recipes
-          </button>
-        ) : (
-          <button className={getStyle(styles, "recipeActive")}>
-            Find Recipes
-          </button>
-        )}
-      </Link>
+      {checkedIngredients.length === 0
+        ? noIngredientsMessage
+        : findRecipesButton}
     </div>
   );
 }
@@ -159,6 +172,7 @@ const styles = {
   table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   text: ["text-sm", "mb-3"],
   toggleCtn: ["flex", "items-center", "mt-10", "justify-between"],
+  title: ["text-2xl", "font-bold", "tracking-wide"],
   recipeActive: [
     "flex",
     "justify-center",

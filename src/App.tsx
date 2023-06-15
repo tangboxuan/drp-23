@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { setupIonicReact } from "@ionic/react";
 
 import "@ionic/react/css/normalize.css";
@@ -22,7 +22,7 @@ import Recipes from "./components/recipes/Recipes";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import "dayjs/locale/en-gb";
-// import { socket } from "./socket";
+import { socket } from "./socket";
 import api from "./api";
 
 setupIonicReact();
@@ -37,27 +37,27 @@ function App() {
     });
   };
 
-  // useEffect(() => {
-  //   refreshIngredients();
+  useEffect(() => {
+    refreshIngredients();
 
-  //   function onConnect() {
-  //     setConnected(true);
-  //   }
+    // function onConnect() {
+    //   // setConnected(true);
+    // }
 
-  //   function onDisconnect() {
-  //     setConnected(false);
-  //   }
+    // function onDisconnect() {
+    //   // setConnected(false);
+    // }
 
-  //   socket.on("connect", onConnect);
-  //   socket.on("disconnect", onDisconnect);
-  //   socket.on("update-fridge", refreshIngredients);
+    //   socket.on("connect", onConnect);
+    //   socket.on("disconnect", onDisconnect);
+    socket.on("update-fridge", refreshIngredients);
 
-  //   return () => {
-  //     socket.off("connect", onConnect);
-  //     socket.off("disconnect", onDisconnect);
-  //     socket.off("update-fridge", refreshIngredients);
-  //   };
-  // }, []);
+    return () => {
+      //     socket.off("connect", onConnect);
+      //     socket.off("disconnect", onDisconnect);
+      socket.off("update-fridge", refreshIngredients);
+    };
+  }, []);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">

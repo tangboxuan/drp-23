@@ -34,34 +34,30 @@ const theme = createTheme({
 });
 
 function AddIngredient({ refresh }: Props) {
-  const [adding, setAdding] = useState(false);
-  const [ingredient, setIngredient] = useState<spoonacularIngredient | null>(
-    null
-  );
-  const [quantity, setQuantity] = useState(0);
-  const [expiry, setExpiry] = useState<Date | null>(new Date());
-  const [autocomplete, setAutocomplete] = useState<spoonacularIngredient[]>([]);
+    const [adding, setAdding] = useState(false);
+    const [ingredient, setIngredient] = useState<spoonacularIngredient | null>(null);
+    const [quantity, setQuantity] = useState(0);
+    const [expiry, setExpiry] = useState<Date | null>(new Date());
+    const [autocomplete, setAutocomplete] = useState<spoonacularIngredient[]>([]);
 
-  const addToFridge = () => {
-    if (ingredient) {
-      api
-        .post("/add-to-fridge", {
-          name: ingredient.name,
-          quantity: quantity,
-          expiry: expiry,
-          image: ingredient.image,
-          category: "Vegetables",
-        })
-        .then(() => {
-          setAdding(false);
-          setIngredient(null);
-          setQuantity(0);
-          refresh();
-        });
-    } else {
-      alert("Please select an ingredient");
-    }
-  };
+    const addToFridge = () => {
+        if (ingredient) {
+            api.post("/add-to-fridge", {
+                name: ingredient.name,
+                quantity: quantity,
+                expiry: expiry,
+                image: ingredient.image,
+                category: "Vegetables"
+            }).then(() => {
+                setAdding(false)
+                setIngredient(null)
+                setQuantity(0)
+                refresh()
+            })
+        } else {
+            alert("Please select an ingredient");
+        }
+    };
 
   const searchIngredient = (i: string) => {
     recipeApi

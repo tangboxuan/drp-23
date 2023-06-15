@@ -8,9 +8,11 @@ import { useEffect, useState } from "react";
 import { recipeDetails, recipeSummaries } from "./SampleRecipes";
 import RecipeCard from "./RecipeCard";
 import getStyle from "../../Styles";
+import OnlyAvailableRecipesSwitch from "./OnlyAvailableRecipesSwitch";
 
 function Recipes() {
     const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+    const [onlyAvailableRecipes, setOnlyAvailableRecipes] = useState<boolean>(true);
     const location = useLocation();
 
 
@@ -60,26 +62,21 @@ function Recipes() {
             return <RecipeCard recipeSummary={recipe} recipeDetails={recipeDetailsTest[i]} key={recipe.id} />
         });
 
-
+    const recipes = onlyAvailableRecipes ? fridgeOnly : ingredientsNeededRecipes;
     return (
         <>
             <div className={getStyle(styles, "container")}>
                 <h1 className={getStyle(styles, "title")}>Recipes</h1>
-                <p>Ingredients in use: {names}</p>
+                <p className={getStyle(styles, "subtitle")}>Ingredients in use: {names}</p>
+                <OnlyAvailableRecipesSwitch change={setOnlyAvailableRecipes} />
                 <table className={getStyle(styles, "table")}>
                     <tbody>
                         <tr>
-                            <th colSpan={2}>Recipes you can make now</th>
+                            <th colSpan={2}>Recipe</th>
                             <th>Time (mins)</th>
                             <th>$ per serving</th>
                         </tr>
-                        {(fridgeOnly.length > 0) ? fridgeOnly : <tr><td colSpan={4}>No recipes found</td></tr>}
-                        <tr>
-                            <th colSpan={2}>Recipes you can make with additional ingredients</th>
-                            <th>Time (mins)</th>
-                            <th>$ per serving</th>
-                        </tr>
-                        {ingredientsNeededRecipes}
+                        {(recipes.length > 0) ? recipes : <tr><td colSpan={4}>No recipes found</td></tr>}
                     </tbody>
                 </table>
             </div >
@@ -93,6 +90,7 @@ const styles = {
     table: ["border-separate", "border-spacing-y-3", "table-auto"],
     row: ["text-xl"],
     title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
+    subtitle: ["text-xl", "font-bold", "mt-8", "tracking-wide"],
 }
 
 export default Recipes;
