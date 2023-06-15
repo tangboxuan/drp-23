@@ -11,10 +11,10 @@ interface Props {
   ingredients: Ingredient[];
 }
 
-function Dashboard({ingredients}:Props) {
-  useEffect(() => { 
+function Dashboard({ ingredients }: Props) {
+  useEffect(() => {
     document.title = "FoodBuddy";
-   });
+  });
   return (
     <>
       <div className={getStyle(styles, "container")}>
@@ -22,12 +22,12 @@ function Dashboard({ingredients}:Props) {
 
         <h1 className={getStyle(styles, "subtitle")}>My fridge</h1>
 
-        <Link to={"/"+CurrentPage.Recipes}>
+        <Link to={"/" + CurrentPage.Recipes}>
           <Warning ingredient="apples" />
         </Link>
 
-        <Link to={"/"+CurrentPage.Fridge}>
-          <QuickView ingredients={ingredients}/>
+        <Link to={"/" + CurrentPage.Fridge}>
+          <QuickView ingredients={ingredients} />
         </Link>
 
         <Key />
@@ -38,7 +38,17 @@ function Dashboard({ingredients}:Props) {
 }
 
 const styles = {
-  container: ["flex", "flex-col", "h-full", "w-full", "pb-20", "p-10", "mt-5", "overflow-y-scroll", "max-h-screen"],
+  container: [
+    "flex",
+    "flex-col",
+    "h-full",
+    "w-full",
+    "pb-20",
+    "p-10",
+    "mt-5",
+    "overflow-y-scroll",
+    "max-h-screen",
+  ],
   title: ["text-2xl", "font-bold", "tracking-wide"],
   subtitle: ["text-xl", "font-bold", "mt-9", "tracking-wide"],
 };
