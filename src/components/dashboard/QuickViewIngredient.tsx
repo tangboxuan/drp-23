@@ -26,7 +26,7 @@ const styles = {
   ctnsafeGreen: misc.ctnsafeGreen,
   ctnwarningOrange: misc.ctnwarningOrange,
   ctnexpirationRed: misc.ctnexpirationRed,
-  ingredient: ["h-[25px]", "w-[25px]"],
+  ingredient: ["h-[25px]", "w-[25px]", "rounded-full"],
   expiryStatus: [],
 };
 
