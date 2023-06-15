@@ -6,7 +6,11 @@ import Footer from "../shared/Footer";
 import { CurrentPage } from "../../util/CurrentPage";
 import { Link } from "react-router-dom";
 
-function Dashboard() {
+interface Props {
+  ingredients: Ingredient[];
+}
+
+function Dashboard({ingredients}:Props) {
   return (
     <>
       <div className={getStyle(styles, "container")}>
@@ -19,7 +23,7 @@ function Dashboard() {
         </Link>
 
         <Link to={"/"+CurrentPage.Fridge}>
-          <QuickView />
+          <QuickView ingredients={ingredients}/>
         </Link>
 
         <Key />
