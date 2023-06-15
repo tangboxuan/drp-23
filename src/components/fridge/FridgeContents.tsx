@@ -2,7 +2,6 @@ import { ReactNode, useState } from "react";
 import IngredientCategoryRow from "./IngredientCategoryRow";
 import IngredientRow from "./IngredientRow";
 import getStyle from "../../Styles";
-import AddIngredient from "./AddIngredient";
 import ViewSwitch from "./ViewSwitch";
 import { Link } from "react-router-dom";
 import DateSwitch from "./DateSwitch";
@@ -133,10 +132,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
   );
 
   return (
-    <div className={getStyle(styles, "container")}>
-      <div className={getStyle(styles, "addWrapper")}>
-        <AddIngredient refresh={refresh} />
-      </div>
+    <div>
       <h1 className={getStyle(styles, "title")}>Currently in your pantry:</h1>
       <div className={getStyle(styles, "toggleCtn")}>
         <ViewSwitch change={setCategoryView} />
@@ -160,18 +156,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
 }
 
 const styles = {
-  addWrapper: ["flex", "w-full", "justify-center", "items-center"],
-  container: [
-    "flex",
-    "flex-col",
-    "h-full",
-    "w-full",
-    "pt-10",
-    "pl-10",
-    "pr-10",
-    "mt-5",
-  ],
-  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
+  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4", "w-full"],
   text: ["text-sm", "mb-3"],
   toggleCtn: ["flex", "items-center", "mt-6", "justify-between"],
   title: ["text-[22px]", "font-bold", "tracking-wide", "mt-10"],
