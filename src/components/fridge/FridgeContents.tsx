@@ -133,7 +133,6 @@ function FridgeContents({ ingredients, refresh }: Props) {
 
   return (
     <div>
-      <h1 className={getStyle(styles, "title")}>Currently in your pantry:</h1>
       <div className={getStyle(styles, "toggleCtn")}>
         <ViewSwitch change={setCategoryView} />
         <DateSwitch change={setDayView} />
@@ -156,10 +155,15 @@ function FridgeContents({ ingredients, refresh }: Props) {
 }
 
 const styles = {
-  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4", "w-full"],
+  table: [
+    "border-separate",
+    "border-spacing-y-3",
+    "table-auto",
+    "mt-4",
+    "w-full",
+  ],
   text: ["text-sm", "mb-3"],
   toggleCtn: ["flex", "items-center", "mt-6", "justify-between"],
-  title: ["text-[22px]", "font-bold", "tracking-wide", "mt-10"],
   recipeActive: [
     "flex",
     "justify-center",

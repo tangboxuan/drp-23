@@ -208,7 +208,14 @@ const styles = {
   rowitem: ["m-1"],
   rowitem2: ["m-1", "w-30"],
   rowitem3: ["m-1", "w-40"],
-  text: ["items-center", "justify-center", "ml-6", "flex", "text-md"],
+  text: [
+    "items-center",
+    "justify-center",
+    "ml-6",
+    "flex",
+    "text-md",
+    "font-medium",
+  ],
   greenCircle: [
     "rounded-full",
     "flex",

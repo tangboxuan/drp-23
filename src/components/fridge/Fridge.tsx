@@ -11,12 +11,14 @@ interface Props {
 }
 
 function Fridge({ ingredients, refreshIngredients }: Props) {
-  useEffect(() => { 
+  useEffect(() => {
     document.title = "Fridge";
-   });
+  });
   return (
     <div className={getStyle(styles, "container")}>
       <div className={getStyle(styles, "body")}>
+        <h1 className={getStyle(styles, "title")}>Currently in your pantry:</h1>
+
         <div className={getStyle(styles, "addWrapper")}>
           <AddIngredient refresh={refreshIngredients} />
         </div>
@@ -44,7 +46,8 @@ const styles = {
     "mt-5",
   ],
   body: ["overflow-y-scroll", "max-h-screen", "pb-20"],
-  addWrapper: ["flex", "w-full", "justify-center", "items-center"],
+  addWrapper: ["flex", "w-full", "justify-center", "items-center", "mt-5"],
+  title: ["text-[22px]", "font-bold", "tracking-wide"],
 };
 
 export default Fridge;
