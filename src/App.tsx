@@ -29,7 +29,7 @@ import api from "./api";
 setupIonicReact();
 
 function App() {
-  const [connected, setConnected] = useState(false);
+  // const [connected, setConnected] = useState(false);
   const [ingredients, setIngredients] = useState([]);
 
   const refreshIngredients = () => {
@@ -42,11 +42,11 @@ function App() {
     refreshIngredients();
 
     function onConnect() {
-      setConnected(true);
+      // setConnected(true);
     }
 
     function onDisconnect() {
-      setConnected(false);
+      // setConnected(false);
     }
 
     socket.on("connect", onConnect);
