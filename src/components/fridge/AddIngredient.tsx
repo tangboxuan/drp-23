@@ -115,6 +115,7 @@ function AddIngredient({ refresh }: Props) {
           marginBottom: "5px",
         }}
         label="Quantity"
+        type="number"
         onChange={(e) => setQuantity(parseInt(e.target.value))}
       />
 

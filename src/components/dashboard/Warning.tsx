@@ -10,9 +10,9 @@ function Warning({ ingredients }: Props) {
   const todayExpiring = ingredients.filter(
     (ingredient) => ingredient.expiry == 0
   ).map((ingredient) => ingredient.name);
-  const expired = ingredients.filter(
-    (ingredient) => ingredient.expiry < 0
-  ).map((ingredient) => ingredient.name);
+  // const expired = ingredients.filter(
+  //   (ingredient) => ingredient.expiry < 0
+  // ).map((ingredient) => ingredient.name);
   const tmrExpiring = ingredients.filter(
     (ingredient) => ingredient.expiry == 1
   ).map((ingredient) => ingredient.name);

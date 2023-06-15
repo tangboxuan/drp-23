@@ -15,9 +15,11 @@ def json(i: ingredients.Ingredient) -> dict:
 
 @updateClientFridge
 def add(data):
-    ingredients.add(data["name"].capitalize(), data["quantity"],
-                    data["image"], data["category"], 
-                    datetime.fromisoformat(data["expiry"]))
+    expiry = datetime.fromisoformat(data["expiry"]).date()
+    if expiry >= date.today() - timedelta(days=1):
+        ingredients.add(data["name"].capitalize(), data["quantity"],
+                        data["image"], data["category"], 
+                        expiry)
 
 
 def getAll():
