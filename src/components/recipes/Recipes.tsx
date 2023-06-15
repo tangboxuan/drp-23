@@ -17,7 +17,7 @@ function Recipes() {
 
 
     useEffect(() => {
-        console.log("useEffect");
+        document.title = "Recipes";
         if (location.state !== null) {
             console.log("getting ingredients from location");
             setIngredients(location.state?.ingredients)

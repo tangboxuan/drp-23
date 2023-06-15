@@ -5,12 +5,16 @@ import Key from "./Key";
 import Footer from "../shared/Footer";
 import { CurrentPage } from "../../util/CurrentPage";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 interface Props {
   ingredients: Ingredient[];
 }
 
 function Dashboard({ingredients}:Props) {
+  useEffect(() => { 
+    document.title = "FoodBuddy";
+   });
   return (
     <>
       <div className={getStyle(styles, "container")}>

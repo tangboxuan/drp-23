@@ -2,6 +2,7 @@ import { CurrentPage } from "../../util/CurrentPage";
 import Footer from "../shared/Footer";
 import FridgeContents from "./FridgeContents";
 import getStyle from "../../Styles";
+import { useEffect } from "react";
 
 interface Props {
   ingredients: Ingredient[];
@@ -9,6 +10,9 @@ interface Props {
 }
 
 function Fridge({ ingredients, refreshIngredients }: Props) {
+  useEffect(() => { 
+    document.title = "Fridge";
+   });
   return (
     <>
       <div className={getStyle(styles, "body")}>
