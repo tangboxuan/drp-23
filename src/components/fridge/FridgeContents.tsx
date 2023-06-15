@@ -160,6 +160,7 @@ const styles = {
   table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   text: ["text-sm", "mb-3"],
   toggleCtn: ["flex", "items-center", "mt-10", "justify-between"],
+  title: ["text-2xl", "font-bold", "tracking-wide"],
   recipeActive: [
     "flex",
     "justify-center",
