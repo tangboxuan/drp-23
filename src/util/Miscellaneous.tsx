@@ -13,7 +13,7 @@ export const ctnsafeGreen = [
 
 export const ctnwarningOrange = [
   "border-[5px]",
-  "border-safeGreen",
+  "border-warningOrange",
   "bg-white",
   "rounded-full",
   "h-[44px]",
@@ -26,7 +26,7 @@ export const ctnwarningOrange = [
 
 export const ctnexpirationRed = [
   "border-[5px]",
-  "border-safeGreen",
+  "border-expirationRed",
   "bg-white",
   "rounded-full",
   "h-[44px]",
