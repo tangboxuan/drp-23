@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getStyle from "../../Styles";
 import {
   TextField,
@@ -10,6 +10,7 @@ import {
 import api from "../../api";
 import { DatePicker } from "@mui/x-date-pickers";
 import recipeApi from "../recipes/RecipesApi.tsx";
+import { useLocation } from "react-router-dom";
 
 type spoonacularIngredient = {
   image: string;
@@ -41,6 +42,14 @@ function AddIngredient({ refresh }: Props) {
   const [quantity, setQuantity] = useState(0);
   const [expiry, setExpiry] = useState<Date | null>(new Date());
   const [autocomplete, setAutocomplete] = useState<spoonacularIngredient[]>([]);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state !== null) {
+      setAdding(location.state?.jumpToAdd);
+    }
+  }, [])
+  
 
   const addToFridge = () => {
     if (ingredient) {

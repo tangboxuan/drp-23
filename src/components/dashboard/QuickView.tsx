@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import getStyle from "../../Styles";
 import QuickViewIngredient from "./QuickViewIngredient";
+import { CurrentPage } from "../../util/CurrentPage";
 
 interface Props {
   ingredients: Ingredient[];
@@ -28,6 +30,7 @@ function QuickView({ingredients}:Props) {
       <div className={getStyle(styles, "subCtn")}>
         {rings}
         <div className={getStyle(styles, "plusCtn")}>
+          <Link to={"/"+CurrentPage.Fridge} state={{jumpToAdd: true}}>
           <svg
             className={getStyle(styles, "plus")}
             xmlns="http://www.w3.org/2000/svg"
@@ -35,6 +38,7 @@ function QuickView({ingredients}:Props) {
           >
             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
           </svg>
+          </Link>
         </div>
       </div>
 

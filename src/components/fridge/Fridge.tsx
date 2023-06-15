@@ -20,7 +20,7 @@ function Fridge({ ingredients, refreshIngredients }: Props) {
         <h1 className={getStyle(styles, "title")}>Currently in your pantry:</h1>
 
         <div className={getStyle(styles, "addWrapper")}>
-          <AddIngredient refresh={refreshIngredients} />
+          <AddIngredient refresh={refreshIngredients}/>
         </div>
         <FridgeContents
           ingredients={ingredients}
