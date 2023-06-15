@@ -5,3 +5,4 @@ flask_sqlalchemy
 flask_socketio
 gunicorn
 gevent>=1.4
+gevent-websocket
