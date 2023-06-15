@@ -3,31 +3,51 @@ import { IonIcon } from "@ionic/react";
 import { alarmOutline } from "ionicons/icons";
 
 interface Props {
-  ingredient: string; // String for now, but will be changed to Ingredient type
+  ingredients: Ingredient[];
 }
 
-function Warning({ ingredient }: Props) {
-  return (
-    <div className={getStyle(styles, "container")}>
-      <IonIcon className={getStyle(styles, "icon")} icon={alarmOutline} />
+function Warning({ ingredients }: Props) {
+  const todayExpiring = ingredients.filter(
+    (ingredient) => ingredient.expiry == 0
+  ).map((ingredient) => ingredient.name);
+  // const expired = ingredients.filter(
+  //   (ingredient) => ingredient.expiry < 0
+  // ).map((ingredient) => ingredient.name);
+  const tmrExpiring = ingredients.filter(
+    (ingredient) => ingredient.expiry == 1
+  ).map((ingredient) => ingredient.name);
 
-      <p className={getStyle(styles, "message")}>
-        Your {ingredient} are expiring!
-      </p>
+  function generateMessage(ingredients:string[], expiry:string) {
 
-      {/* TODO: Ingredient should have different members later, so 'are' and 'is' should be loaded based on ingredient's qty */}
+        return ingredients.length == 0 
+          ? <></> 
+          : <div className={getStyle(styles, "container")}>
+        <IonIcon className={getStyle(styles, "icon")} icon={alarmOutline} />
 
-      <div className={getStyle(styles, "date")}>
-        <p className={getStyle(styles, "dateText")}>22</p>
-        <p className={getStyle(styles, "dateText")}>Aug</p>
-      </div>
+        <p className={getStyle(styles, "message")}>
+          Your {ingredients.join(", ")} {ingredients.length == 1 ? "is" : "are"} expiring!
+        </p>
 
-      {/* 
-            TODO: - Make this inputted from props
-                  - Need a way to wrap text if bigger
-      
-      */}
+        {/* TODO: Ingredient should have different members later, so 'are' and 'is' should be loaded based on ingredient's qty */}
+
+        <div className={getStyle(styles, "date")}>
+          <p className={getStyle(styles, "dateText")}>{expiry}</p>
+        </div>
+
+        {/* 
+              TODO: - Make this inputted from props
+                    - Need a way to wrap text if bigger
+        
+        */}
     </div>
+  }
+
+  return (
+    <>
+    {/* {generateMessage(expired, "EXP")} */}
+    {generateMessage(todayExpiring, "TODAY")}
+    {generateMessage(tmrExpiring, "TMR")}
+    </>
   );
 }
 
@@ -56,8 +76,7 @@ const styles = {
   ],
   dateText: [
     "text-white",
-    "text-[13px]",
-    "mt-[-5px]",
+    "text-[9px]",
     "text-sm",
     "font-semibold",
   ],

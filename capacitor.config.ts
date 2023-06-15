@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'drp23',
   webDir: 'dist',
   server: {
-    url: 'http://10.0.2.2:5173/',
+    url: 'http://10.0.2.2:5174/',
   }
 };
 

@@ -23,7 +23,7 @@ function Dashboard({ ingredients }: Props) {
         <h1 className={getStyle(styles, "subtitle")}>My fridge</h1>
 
         <Link to={"/" + CurrentPage.Recipes}>
-          <Warning ingredient="apples" />
+          <Warning ingredients={ingredients} />
         </Link>
 
         <Link to={"/" + CurrentPage.Fridge}>
