@@ -193,7 +193,7 @@ const styles = {
     "p-10",
     "mt-5",
   ],
-  table: ["border-separate", "border-spacing-y-3", "table-auto"],
+  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   row: ["text-xl"],
   title: ["text-2xl", "font-bold", "mt-2", "tracking-wide"],
   subtitle: ["text-xl", "font-bold", "mt-8", "tracking-wide"],
