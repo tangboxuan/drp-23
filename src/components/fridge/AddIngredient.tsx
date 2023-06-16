@@ -48,8 +48,7 @@ function AddIngredient({ refresh }: Props) {
     if (location.state !== null) {
       setAdding(location.state?.jumpToAdd);
     }
-  }, [])
-
+  }, []);
 
   const addToFridge = () => {
     if (ingredient) {
@@ -190,7 +189,7 @@ function AddIngredient({ refresh }: Props) {
 }
 
 const styles = {
-  btnCtn: ["flex", "w-full", "justify-center", "items-center", "mt-4"],
+  btnCtn: ["flex", "w-full", "justify-center", "items-center", "mt-7"],
   textField: ["border-none"],
   form: ["mx-2"],
   row: [
@@ -242,20 +241,22 @@ const styles = {
     "flex",
     "items-center",
     "justify-center",
-    "h-[30px]",
-    "w-[30px]",
+    "h-[35px]",
+    "w-[35px]",
     "bg-green-700",
     "ml-3",
+    "shadow-md",
   ],
   redCircle: [
     "rounded-full",
     "flex",
     "items-center",
     "justify-center",
-    "h-[30px]",
-    "w-[30px]",
+    "h-[35px]",
+    "w-[35px]",
     "bg-expirationRed",
     "mr-8",
+    "shadow-md",
   ],
   icon: ["h-6", "w-6"],
   addrow: [
