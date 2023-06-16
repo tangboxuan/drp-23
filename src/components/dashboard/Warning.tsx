@@ -17,15 +17,17 @@ function Warning({ ingredients }: Props) {
     (ingredient) => ingredient.expiry == 1
   ).map((ingredient) => ingredient.name);
 
-  function generateMessage(ingredients:string[], expiry:string) {
+  function generateMessage(ingredients: string[], expiry: string) {
 
-        return ingredients.length == 0 
-          ? <></> 
-          : <div className={getStyle(styles, "container")}>
+    return ingredients.length == 0
+      ? <></>
+      : <div className={getStyle(styles, "container")}>
         <IonIcon className={getStyle(styles, "icon")} icon={alarmOutline} />
 
         <p className={getStyle(styles, "message")}>
-          Your {ingredients.join(", ")} {ingredients.length == 1 ? "is" : "are"} expiring!
+          You should eat your {ingredients.map((ingredient) => {
+            return ingredient.toLowerCase();
+          }).join(", ")}{ingredients.length == 1 ? "" : "s"} soon!
         </p>
 
         {/* TODO: Ingredient should have different members later, so 'are' and 'is' should be loaded based on ingredient's qty */}
@@ -39,14 +41,14 @@ function Warning({ ingredients }: Props) {
                     - Need a way to wrap text if bigger
         
         */}
-    </div>
+      </div>
   }
 
   return (
     <>
-    {/* {generateMessage(expired, "EXP")} */}
-    {generateMessage(todayExpiring, "TODAY")}
-    {generateMessage(tmrExpiring, "TMR")}
+      {/* {generateMessage(expired, "EXP")} */}
+      {generateMessage(todayExpiring, "TODAY")}
+      {generateMessage(tmrExpiring, "TMR")}
     </>
   );
 }

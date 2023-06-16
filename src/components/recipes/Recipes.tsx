@@ -20,7 +20,6 @@ interface RecipeInfo {
 
 function Recipes() {
     const [onlyAvailableRecipes, setOnlyAvailableRecipes] = useState<boolean>(true);
-    let names: string[] = [];
     const [recipeInfo, setRecipeInfo] = useState<RecipeInfo>({
         ingredients: [],
         recipeSummaries: [],
@@ -32,7 +31,7 @@ function Recipes() {
         console.log("Ingredients");
         console.log(ingredients);
 
-        names = Array.from(new Set<string>(ingredients.map((ingredient) => ingredient.name)).values());
+        const names = Array.from(new Set<string>(ingredients.map((ingredient) => ingredient.name)).values());
         let recipeSummaries: RecipeSummary[] = [];
         let recipeDetails: RecipeDetails[] = [];
 
@@ -72,7 +71,21 @@ function Recipes() {
                     recipeSummaries: recipeSummaries,
                     recipeDetails: recipeDetails,
                 });
+            }).catch((error) => {
+                console.log(error);
+                setRecipeInfo({
+                    ingredients: ingredients,
+                    recipeSummaries: recipeSummaries,
+                    recipeDetails: [],
+                })
             });
+        }).catch((error) => {
+            console.log(error);
+            setRecipeInfo({
+                ingredients: ingredients,
+                recipeSummaries: [],
+                recipeDetails: [],
+            })
         });
     }
 
@@ -114,6 +127,7 @@ function Recipes() {
         });
 
     const recipes = onlyAvailableRecipes ? fridgeOnly : ingredientsNeededRecipes;
+    const names = Array.from(new Set<string>(recipeInfo.ingredients.map((ingredient) => ingredient.name)).values());
     return (
         <>
             <div className={getStyle(styles, "container")}>
