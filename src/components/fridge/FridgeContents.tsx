@@ -124,11 +124,7 @@ function FridgeContents({ ingredients, refresh }: Props) {
     </button>
   );
 
-  const noIngredientsMessage = (
-    <div>
-      {disabledButton}
-    </div>
-  );
+  const noIngredientsMessage = <div>{disabledButton}</div>;
 
   return (
     <div>
@@ -137,15 +133,14 @@ function FridgeContents({ ingredients, refresh }: Props) {
         <DateSwitch change={setDayView} />
       </div>
       {ingredients.length === 0 ? (
-        <p className="mt-3 text-center">
+        <p className="mt-9 text-center">
           Add ingredients for recipe suggestions!
         </p>
-      )
-        :
+      ) : (
         <table className={getStyle(styles, "table")}>
           <tbody>{rows}</tbody>
         </table>
-      }
+      )}
 
       {checkedIngredients.length === 0
         ? noIngredientsMessage
