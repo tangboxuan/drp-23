@@ -52,7 +52,7 @@ function categoriseView(
         <IngredientRow
           ingredient={element}
           refresh={refresh}
-          key={element.id + Math.random()}
+          key={element.id}
           handleOnChange={updateCheckbox}
           dayView={dayView}
         />
@@ -127,7 +127,6 @@ function FridgeContents({ ingredients, refresh }: Props) {
   const noIngredientsMessage = (
     <div>
       {disabledButton}
-      {/* <p>Select ingredients to generate recipes!</p> */}
     </div>
   );
 
@@ -137,15 +136,16 @@ function FridgeContents({ ingredients, refresh }: Props) {
         <ViewSwitch change={setCategoryView} />
         <DateSwitch change={setDayView} />
       </div>
-      <table className={getStyle(styles, "table")}>
-        {ingredients.length === 0 ? (
-          <p className="mt-3 text-center">
-            Add ingredients for recipe suggestions!
-          </p>
-        ) : (
+      {ingredients.length === 0 ? (
+        <p className="mt-3 text-center">
+          Add ingredients for recipe suggestions!
+        </p>
+      )
+        :
+        <table className={getStyle(styles, "table")}>
           <tbody>{rows}</tbody>
-        )}
-      </table>
+        </table>
+      }
 
       {checkedIngredients.length === 0
         ? noIngredientsMessage
