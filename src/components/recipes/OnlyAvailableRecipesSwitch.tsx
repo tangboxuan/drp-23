@@ -31,7 +31,7 @@ function OnlyAvailableRecipesSwitch({ change }: Props) {
           }}
           className={
             checked
-              ? getStyle(styles, "subCtnInActive")
+              ? getStyle(styles, "subCtnInactive")
               : getStyle(styles, "subCtnActive")
           }
         >
