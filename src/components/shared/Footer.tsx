@@ -37,6 +37,7 @@ const styles = {
     "h-15",
     "pt-2",
     "bg-white",
+    "pb-7",
   ],
   subCtn: ["flex", "items-center", "justify-around"],
 };
