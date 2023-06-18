@@ -49,7 +49,7 @@ const styles = {
     "overflow-y-scroll",
     "max-h-screen",
   ],
-  title: ["text-2xl", "font-bold", "tracking-wide"],
+  title: ["text-2xl", "font-bold", "tracking-wide", "mt-8"],
   subtitle: ["text-xl", "font-bold", "mt-9", "tracking-wide"],
 };
 

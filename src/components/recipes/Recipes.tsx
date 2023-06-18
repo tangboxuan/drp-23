@@ -37,9 +37,6 @@ function Recipes() {
     let recipeSummaries: RecipeSummary[] = [];
     let recipeDetails: RecipeDetails[] = [];
 
-    // console.log("getting recipes");
-    // console.log(names.join(","))
-
     recipesApi
       .get("/recipes/findByIngredients", {
         params: {
@@ -63,14 +60,14 @@ function Recipes() {
             },
           })
           .then((response) => {
-            console.log("recipe details");
-            console.log(response.data);
+            // console.log("recipe details");
+            // console.log(response.data);
             const details: RecipeDetails[] = response.data;
             recipeDetails = details;
-            console.log("setting recipe info");
-            console.log(ingredients);
-            console.log(recipeSummaries);
-            console.log(recipeDetails);
+            // console.log("setting recipe info");
+            // console.log(ingredients);
+            // console.log(recipeSummaries);
+            // console.log(recipeDetails);
 
             setRecipeInfo({
               ingredients: ingredients,
@@ -107,7 +104,7 @@ function Recipes() {
       ingredients = location.state?.ingredients;
       getRecipeInformation(ingredients);
     } else if (ingredients.length === 0) {
-      // get all ingredients from the fridge that the user has
+      // Get all ingredients from the fridge that the user has
       console.log("getting ingredients from fridge");
       fridgeApi.get("/get-fridge").then((response) => {
         ingredients = response.data;
@@ -128,11 +125,6 @@ function Recipes() {
       );
     });
 
-  // console.log("recipe summaries")
-  // console.log(recipeInfo.recipeSummaries)
-  // console.log("fridge only")
-  // console.log(fridgeOnly)
-
   const ingredientsNeededRecipes = recipeInfo.recipeSummaries
     .filter((recipe) => recipe.missedIngredientCount > 0)
     .map(function (recipe, i) {
@@ -151,12 +143,13 @@ function Recipes() {
       recipeInfo.ingredients.map((ingredient) => ingredient.name)
     ).values()
   );
+
   return (
     <>
       <div className={getStyle(styles, "container")}>
         <h1 className={getStyle(styles, "title")}>Recipes</h1>
         <p className={getStyle(styles, "subtitle")}>
-          Ingredients in use: {names.join(", ")}
+          You selected: {names.join(", ")}
         </p>
         <OnlyAvailableRecipesSwitch change={setOnlyAvailableRecipes} />
         <table className={getStyle(styles, "table")}>
@@ -195,8 +188,8 @@ const styles = {
   ],
   table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   row: ["text-xl"],
-  title: ["text-2xl", "font-bold", "mt-2", "tracking-wide"],
-  subtitle: ["text-xl", "font-bold", "mt-8", "tracking-wide"],
+  title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
+  subtitle: ["text-lg", "mt-8", "tracking-wide"],
 };
 
 export default Recipes;

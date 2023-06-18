@@ -1,6 +1,9 @@
 import axios from "axios";
 
-export const URL = process.env.NODE_ENV === 'production' ? "https://drp23.herokuapp.com" : 'http://localhost:8000';
+export const URL =
+  process.env.NODE_ENV === "production"
+    ? "https://drp23.herokuapp.com"
+    : "http://localhost:8000";
 
 const client = axios.create({
   baseURL: URL,
