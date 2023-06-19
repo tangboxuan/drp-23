@@ -152,6 +152,8 @@ function Recipes() {
           You selected: {names.join(", ")}
         </p>
         <OnlyAvailableRecipesSwitch change={setOnlyAvailableRecipes} />
+
+        {/* <div className={getStyle(styles, "recipeCtn")}>{recipes}</div> */}
         <table className={getStyle(styles, "table")}>
           <tbody>
             <tr>
@@ -186,10 +188,11 @@ const styles = {
     "p-10",
     "mt-5",
   ],
-  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
+  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4", ],
+  recipeCtn: ["flex", "flex-wrap", "items-center", "justify-center", "gap-x-5"],
   row: ["text-xl"],
   title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
-  subtitle: ["text-lg", "mt-8", "tracking-wide"],
+  subtitle: ["mt-8", "tracking-wide"],
 };
 
 export default Recipes;
