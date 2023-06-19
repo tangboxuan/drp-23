@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.example.app',
-  appName: 'drp23',
+  appId: 'com.drp23.app',
+  appName: 'FoodBuddy',
   webDir: 'dist',
   server: {
     url: 'https://drp23.herokuapp.com/',
