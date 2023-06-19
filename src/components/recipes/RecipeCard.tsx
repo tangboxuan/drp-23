@@ -17,9 +17,9 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const pricePerServing = (
-    Math.round(recipeDetails.pricePerServing * 100) / 10000
-  ).toFixed(2);
+  // const pricePerServing = (
+  //   Math.round(recipeDetails.pricePerServing * 100) / 10000
+  // ).toFixed(2);
 
   const ingredients = recipeDetails.extendedIngredients.map((ingredient) => {
     const measure = ingredient.measures.metric;

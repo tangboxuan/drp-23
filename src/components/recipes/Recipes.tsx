@@ -58,16 +58,33 @@ function Recipes() {
               apiKey: currentApiKey,
               ids: summaries.map((recipe) => recipe.id).join(","),
             },
-          })
-          .then((response) => {
-            // console.log("recipe details");
-            // console.log(response.data);
-            const details: RecipeDetails[] = response.data;
-            recipeDetails = details;
-            // console.log("setting recipe info");
-            // console.log(ingredients);
-            // console.log(recipeSummaries);
-            // console.log(recipeDetails);
+            headers: {
+                'X-RapidAPI-Key': 'aeb829b790mshc38c4633825123fp1b59acjsnef421b3516d6',
+                'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+            }
+        }).then((response) => {
+            console.log("recipe summaries");
+            console.log(response.data);
+            const summaries: RecipeSummary[] = response.data;
+            recipeSummaries = summaries;
+            recipesApi.get("/recipes/informationBulk", {
+                params: {
+                    apiKey: currentApiKey,
+                    ids: summaries.map((recipe) => recipe.id).join(",")
+                },
+                headers: {
+                    'X-RapidAPI-Key': 'aeb829b790mshc38c4633825123fp1b59acjsnef421b3516d6',
+                    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+                }
+            }).then((response) => {
+                console.log("recipe details");
+                console.log(response.data);
+                const details: RecipeDetails[] = response.data;
+                recipeDetails = details;
+                console.log("setting recipe info");
+                console.log(ingredients);
+                console.log(recipeSummaries);
+                console.log(recipeDetails);
 
             setRecipeInfo({
               ingredients: ingredients,

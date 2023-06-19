@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import api from "../../api";
 import { DatePicker } from "@mui/x-date-pickers";
-import recipeApi, { currentApiKey } from "../recipes/RecipesApi.tsx";
+import recipesApi, { currentApiKey } from "../recipes/RecipesApi.tsx";
 import { useLocation } from "react-router-dom";
 
 type spoonacularIngredient = {
@@ -72,12 +72,16 @@ function AddIngredient({ refresh }: Props) {
   };
 
   const searchIngredient = (i: string) => {
-    recipeApi
+    recipesApi
       .get("/food/ingredients/autocomplete", {
         params: {
           query: i,
           apiKey: currentApiKey,
         },
+        headers: {
+          'X-RapidAPI-Key': 'aeb829b790mshc38c4633825123fp1b59acjsnef421b3516d6',
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        }
       })
       .then((response) => {
         setAutocomplete(response.data);
