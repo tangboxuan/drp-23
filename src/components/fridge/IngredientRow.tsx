@@ -61,7 +61,7 @@ function IngredientRow({
           <img
             className={getStyle(styles, "ingredient")}
             src={
-              "http://spoonacular.com/cdn/ingredients_100x100/" +
+              "https://spoonacular.com/cdn/ingredients_100x100/" +
               ingredient.image
             }
             alt=""

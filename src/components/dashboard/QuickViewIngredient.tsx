@@ -14,7 +14,7 @@ function QuickViewIngredient({ ingredient }: Props) {
       <img
         className={getStyle(styles, "ingredient")}
         src={
-          "http://spoonacular.com/cdn/ingredients_100x100/" + ingredient.image
+          "https://spoonacular.com/cdn/ingredients_100x100/" + ingredient.image
         }
         alt=""
       />

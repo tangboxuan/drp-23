@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'drp23',
   webDir: 'dist',
   server: {
-    url: 'http://localhost:5173/',
+    url: 'https://drp23.herokuapp.com/',
   }
 };
 

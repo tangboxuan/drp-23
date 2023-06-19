@@ -31,7 +31,9 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
     );
   });
 
-  const instructions = recipeDetails.analyzedInstructions[0].steps.map(
+  const instructions = 
+  recipeDetails.analyzedInstructions.length > 0 ?
+  recipeDetails.analyzedInstructions[0].steps.map(
     (step) => {
       return (
         <ListItem sx={{ display: "list-item" }} key={step.number}>
@@ -39,7 +41,10 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
         </ListItem>
       );
     }
-  );
+  )
+  : <ListItem sx={{ display: "list-item" }} key={1}>
+    No steps provided for this recipe
+  </ListItem>
 
   return (
     <>
