@@ -3,7 +3,7 @@ import axios from "axios";
 export const URL =
   process.env.NODE_ENV === "production"
     ? "https://drp23.herokuapp.com"
-    : "http://localhost:8000";
+    : "https://drp23.herokuapp.com";
 
 const client = axios.create({
   baseURL: URL,
