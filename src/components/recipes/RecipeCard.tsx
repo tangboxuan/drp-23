@@ -64,7 +64,7 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
             className={getStyle(styles, "iconShortView")}
             icon={timeOutline}
           />
-          <div>{recipeDetails.readyInMinutes}</div>
+          <div>{recipeDetails.readyInMinutes} mins</div>
         </div>
       </div>
 
@@ -100,7 +100,7 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
                   icon={timeOutline}
                 />
                 <div className="text-[12px]">
-                  {recipeDetails.readyInMinutes}
+                  {recipeDetails.readyInMinutes} mins
                 </div>
               </div>
 
@@ -109,7 +109,7 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
                   className={getStyle(styles, "iconModal")}
                   icon={walletOutline}
                 />
-                <div className="text-[12px]">{pricePerServing}</div>
+                <div className="text-[12px]">£{pricePerServing} per serving</div>
               </div>
             </div>
           </div>
