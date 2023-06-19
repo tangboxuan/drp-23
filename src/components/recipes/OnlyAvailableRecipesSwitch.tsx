@@ -43,7 +43,7 @@ function OnlyAvailableRecipesSwitch({ change }: Props) {
 }
 
 const styles = {
-  outerCtn: ["flex", "justify-center", "items-center", "mt-4"],
+  outerCtn: ["flex", "justify-center", "items-center", "mt-8"],
   ctn: [
     "flex",
     "rounded-lg",

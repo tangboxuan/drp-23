@@ -65,7 +65,9 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
             alt=""
           />
         </div>
-        <div className="font-medium text-sm mt-3">{recipeSummary.title}</div>
+        <div className="font-medium text-sm mt-3 text-center">
+          {recipeSummary.title}
+        </div>
         <div className={getStyle(styles, "infoCtn")}>
           <IonIcon
             className={getStyle(styles, "iconShortView")}
@@ -120,7 +122,6 @@ const styles = {
     "flex",
     "flex-col",
     "items-center",
-    "p-2",
     "rounded-lg",
     "shadow-md",
     "bg-backgroundBeige",
@@ -128,7 +129,7 @@ const styles = {
     "mt-4",
   ],
   card: ["bg-backgroundBeige", "font-bold"],
-  foodImage: ["w-96", "rounded-3xl", "overflow-hidden"],
+  foodImage: ["w-96", "overflow-hidden"],
   foodImageCtn: [],
   leftEdge: ["rounded-tl-lg", "rounded-bl-lg", "pl-2"],
   rightEdge: ["rounded-tr-lg", "rounded-br-lg"],
@@ -145,8 +146,8 @@ const styles = {
     "right-1",
   ],
   icon: ["h-6", "w-6"],
-  iconShortView: ["h-6", "w-6", "mr-3"],
-  infoCtn: ["flex", "justify-center", "items-center", "w-full"],
+  iconShortView: ["h-6", "w-6", "mr-2"],
+  infoCtn: ["flex", "justify-center", "items-center", "w-full", "mt-3", "mb-3"],
 };
 
 const style = {

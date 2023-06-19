@@ -173,8 +173,8 @@ function Recipes() {
         </p>
         <OnlyAvailableRecipesSwitch change={setOnlyAvailableRecipes} />
 
-        {/* <div className={getStyle(styles, "recipeCtn")}>{recipes}</div> */}
-        <table className={getStyle(styles, "table")}>
+        <div className={getStyle(styles, "recipeCtn")}>{recipes}</div>
+        {/* <table className={getStyle(styles, "table")}>
           <tbody>
             <tr>
               <th colSpan={2}>Recipe</th>
@@ -189,7 +189,7 @@ function Recipes() {
               </tr>
             )}
           </tbody>
-        </table>
+        </table> */}
       </div>
       <Footer currentPage={CurrentPage.Recipes} />
     </>
@@ -209,7 +209,15 @@ const styles = {
     "mt-5",
   ],
   table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
-  recipeCtn: ["flex", "flex-wrap", "items-center", "justify-center", "gap-x-5"],
+  recipeCtn: [
+    "flex",
+    "flex-wrap",
+    "items-start",
+    "justify-center",
+    "gap-x-5",
+    "gap-y-8",
+    "mt-8",
+  ],
   row: ["text-xl"],
   title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
   subtitle: ["mt-8", "tracking-wide"],
