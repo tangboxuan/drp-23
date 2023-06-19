@@ -219,7 +219,7 @@ const styles = {
     "mt-8",
   ],
   row: ["text-xl"],
-  title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
+  title: ["text-2xl", "font-bold", "mt-5", "tracking-wide"],
   subtitle: ["mt-8", "tracking-wide"],
 };
 

@@ -76,6 +76,9 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
           <div>{recipeDetails.readyInMinutes}</div>
         </div>
       </div>
+
+      {/* Modal Recipe Container */}
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -127,9 +130,10 @@ const styles = {
     "bg-backgroundBeige",
     "w-[135px]",
     "mt-4",
+    "h-52",
   ],
   card: ["bg-backgroundBeige", "font-bold"],
-  foodImage: ["w-96", "overflow-hidden"],
+  foodImage: ["w-96", "rounded-sm", "overflow-hidden"],
   foodImageCtn: [],
   leftEdge: ["rounded-tl-lg", "rounded-bl-lg", "pl-2"],
   rightEdge: ["rounded-tr-lg", "rounded-br-lg"],
