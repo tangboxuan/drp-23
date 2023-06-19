@@ -207,6 +207,7 @@ const styles = {
     "w-full",
     "p-10",
     "mt-5",
+    "pb-32",
   ],
   table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   recipeCtn: [

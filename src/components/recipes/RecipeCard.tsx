@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { List, ListItem } from "@mui/material";
-import { timeOutline } from "ionicons/icons";
+import { timeOutline, chevronBackOutline } from "ionicons/icons";
 import { IonIcon } from "@ionic/react";
 
 interface props {
@@ -86,34 +86,43 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="max-h-screen">
-          <button
-            className={getStyle(styles, "smallCircle")}
-            onClick={handleClose}
-          >
-            {cross}
+          <button onClick={handleClose} className={getStyle(styles, "backBtn")}>
+            <IonIcon
+              className={getStyle(styles, "backBtnIcon")}
+              icon={chevronBackOutline}
+            />
+            <p>Back</p>
           </button>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <div className={getStyle(styles, "recipeTitle")}>
             {recipeSummary.title}
-          </Typography>
-          <img src={recipeDetails.image} alt="" />
-          Ingredients:
-          <List
-            sx={{
-              listStyleType: "disc",
-              pl: 4,
-            }}
-          >
-            {ingredients}
-          </List>
-          Instructions:
-          <List
-            sx={{
-              listStyleType: "decimal",
-              pl: 4,
-            }}
-          >
-            {instructions}
-          </List>
+          </div>
+          <div className="w-full flex justify-center mt-6">
+            <img
+              className={getStyle(styles, "recipeImg")}
+              src={recipeDetails.image}
+              alt=""
+            />
+          </div>
+          <div className={getStyle(styles, "instructions")}>
+            <p className="font-medium">Ingredients</p>
+            <List
+              sx={{
+                listStyleType: "disc",
+                pl: 4,
+              }}
+            >
+              {ingredients}
+            </List>
+            <p className="font-medium">Instructions</p>
+            <List
+              sx={{
+                listStyleType: "decimal",
+                pl: 4,
+              }}
+            >
+              {instructions}
+            </List>
+          </div>
         </Box>
       </Modal>
     </>
@@ -132,11 +141,23 @@ const styles = {
     "mt-4",
     "h-52",
   ],
+  backBtn: [
+    "flex",
+    "justify-center",
+    "items-center",
+    "text-expirationRed",
+    "absolute",
+    "top-12",
+    "left-6",
+  ],
+  backBtnIcon: ["h-5", "w-5", "mr-1", "text-expirationRed"],
   card: ["bg-backgroundBeige", "font-bold"],
   foodImage: ["w-96", "rounded-sm", "overflow-hidden"],
   foodImageCtn: [],
   leftEdge: ["rounded-tl-lg", "rounded-bl-lg", "pl-2"],
   rightEdge: ["rounded-tr-lg", "rounded-br-lg"],
+  recipeImg: ["shadow-md", "rounded-md", "w-[300px]"],
+  recipeTitle: ["font-semibold", "text-lg", "text-center", "mt-4"],
   smallCircle: [
     "rounded-full",
     "bg-expirationRed",
@@ -146,12 +167,13 @@ const styles = {
     "h-6",
     "w-6",
     "absolute",
-    "top-1",
-    "right-1",
+    "top-16",
+    "right-3",
   ],
   icon: ["h-6", "w-6"],
   iconShortView: ["h-6", "w-6", "mr-2"],
   infoCtn: ["flex", "justify-center", "items-center", "w-full", "mt-3", "mb-3"],
+  instructions: ["w-full", "pl-3", "pr-1", "mt-5"],
 };
 
 const style = {
@@ -165,23 +187,7 @@ const style = {
   boxShadow: 24,
   p: 4,
   overflowY: "scroll",
+  paddingTop: "80px",
 };
-
-const cross = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="white"
-    className={getStyle(styles, "icon")}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M6 18L18 6M6 6l12 12"
-    />
-  </svg>
-);
 
 export default RecipeCard;
