@@ -47,7 +47,7 @@ function IngredientRow({
   };
 
   const expiryDate = new Date();
-  expiryDate.setDate(expiryDate.getDate() + 1);
+  expiryDate.setDate(expiryDate.getDate() + ingredient.expiry + 1);
   const formattedExpiryDate =
     expiryDate.getDate() + "/" + (expiryDate.getMonth() + 1);
   const expiry = dayView
