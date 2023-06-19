@@ -1,10 +1,9 @@
 import getStyle from "../../Styles";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { List, ListItem } from "@mui/material";
-import { timeOutline, chevronBackOutline } from "ionicons/icons";
+import { timeOutline, chevronBackOutline, walletOutline } from "ionicons/icons";
 import { IonIcon } from "@ionic/react";
 
 interface props {
@@ -17,9 +16,9 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // const pricePerServing = (
-  //   Math.round(recipeDetails.pricePerServing * 100) / 10000
-  // ).toFixed(2);
+  const pricePerServing = (
+    Math.round(recipeDetails.pricePerServing * 100) / 10000
+  ).toFixed(2);
 
   const ingredients = recipeDetails.extendedIngredients.map((ingredient) => {
     const measure = ingredient.measures.metric;
@@ -44,21 +43,8 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
 
   return (
     <>
-      {/* <tr className={getStyle(styles, "card")} onClick={handleOpen}>
-        <td className={getStyle(styles, "leftEdge")}>
-          <img
-            src={recipeDetails.image}
-            className={getStyle(styles, "foodImage")}
-            alt=""
-          />
-        </td>
-        <td className="font-bold">{recipeSummary.title}</td>
-        <td> {recipeDetails.readyInMinutes} </td>
-        <td className={getStyle(styles, "rightEdge")}>{pricePerServing}</td>
-      </tr> */}
-
       <div onClick={handleOpen} className={getStyle(styles, "shortViewCtn")}>
-        <div className={getStyle(styles, "foodImageCtn")}>
+        <div>
           <img
             src={recipeDetails.image}
             className={getStyle(styles, "foodImage")}
@@ -85,7 +71,7 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="max-h-screen">
+        <Box sx={style} className="h-full">
           <button onClick={handleClose} className={getStyle(styles, "backBtn")}>
             <IonIcon
               className={getStyle(styles, "backBtnIcon")}
@@ -96,12 +82,31 @@ function RecipeCard({ recipeSummary, recipeDetails }: props) {
           <div className={getStyle(styles, "recipeTitle")}>
             {recipeSummary.title}
           </div>
-          <div className="w-full flex justify-center mt-6">
+          <div className="w-full flex flex-col items-center mt-6">
             <img
               className={getStyle(styles, "recipeImg")}
               src={recipeDetails.image}
               alt=""
             />
+            <div className={getStyle(styles, "infoModal")}>
+              <div className="flex items-center">
+                <IonIcon
+                  className={getStyle(styles, "iconModal")}
+                  icon={timeOutline}
+                />
+                <div className="text-[12px]">
+                  {recipeDetails.readyInMinutes}
+                </div>
+              </div>
+
+              <div className="flex items-center">
+                <IonIcon
+                  className={getStyle(styles, "iconModal")}
+                  icon={walletOutline}
+                />
+                <div className="text-[12px]">{pricePerServing}</div>
+              </div>
+            </div>
           </div>
           <div className={getStyle(styles, "instructions")}>
             <p className="font-medium">Ingredients</p>
@@ -151,28 +156,14 @@ const styles = {
     "left-6",
   ],
   backBtnIcon: ["h-5", "w-5", "mr-1", "text-expirationRed"],
-  card: ["bg-backgroundBeige", "font-bold"],
   foodImage: ["w-96", "rounded-sm", "overflow-hidden"],
-  foodImageCtn: [],
-  leftEdge: ["rounded-tl-lg", "rounded-bl-lg", "pl-2"],
-  rightEdge: ["rounded-tr-lg", "rounded-br-lg"],
   recipeImg: ["shadow-md", "rounded-md", "w-[300px]"],
   recipeTitle: ["font-semibold", "text-lg", "text-center", "mt-4"],
-  smallCircle: [
-    "rounded-full",
-    "bg-expirationRed",
-    "flex",
-    "items-center",
-    "justify-center",
-    "h-6",
-    "w-6",
-    "absolute",
-    "top-16",
-    "right-3",
-  ],
   icon: ["h-6", "w-6"],
+  iconModal: ["h-4", "w-4", "mr-2"],
   iconShortView: ["h-6", "w-6", "mr-2"],
   infoCtn: ["flex", "justify-center", "items-center", "w-full", "mt-3", "mb-3"],
+  infoModal: ["flex", "w-full", "justify-around", "items-center", "mt-2"],
   instructions: ["w-full", "pl-3", "pr-1", "mt-5"],
 };
 
