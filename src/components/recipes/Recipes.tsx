@@ -37,6 +37,9 @@ function Recipes() {
     let recipeSummaries: RecipeSummary[] = [];
     let recipeDetails: RecipeDetails[] = [];
 
+    console.log("getting recipes");
+    console.log(names.join(","));
+
     recipesApi
       .get("/recipes/findByIngredients", {
         params: {
@@ -45,6 +48,12 @@ function Recipes() {
           number: 5,
           ranking: 2,
           ignorePantry: true,
+        },
+        headers: {
+          "X-RapidAPI-Key":
+            "aeb829b790mshc38c4633825123fp1b59acjsnef421b3516d6",
+          "X-RapidAPI-Host":
+            "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
         },
       })
       .then((response) => {
@@ -59,32 +68,21 @@ function Recipes() {
               ids: summaries.map((recipe) => recipe.id).join(","),
             },
             headers: {
-                'X-RapidAPI-Key': 'aeb829b790mshc38c4633825123fp1b59acjsnef421b3516d6',
-                'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-            }
-        }).then((response) => {
-            console.log("recipe summaries");
+              "X-RapidAPI-Key":
+                "aeb829b790mshc38c4633825123fp1b59acjsnef421b3516d6",
+              "X-RapidAPI-Host":
+                "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            },
+          })
+          .then((response) => {
+            console.log("recipe details");
             console.log(response.data);
-            const summaries: RecipeSummary[] = response.data;
-            recipeSummaries = summaries;
-            recipesApi.get("/recipes/informationBulk", {
-                params: {
-                    apiKey: currentApiKey,
-                    ids: summaries.map((recipe) => recipe.id).join(",")
-                },
-                headers: {
-                    'X-RapidAPI-Key': 'aeb829b790mshc38c4633825123fp1b59acjsnef421b3516d6',
-                    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-                }
-            }).then((response) => {
-                console.log("recipe details");
-                console.log(response.data);
-                const details: RecipeDetails[] = response.data;
-                recipeDetails = details;
-                console.log("setting recipe info");
-                console.log(ingredients);
-                console.log(recipeSummaries);
-                console.log(recipeDetails);
+            const details: RecipeDetails[] = response.data;
+            recipeDetails = details;
+            console.log("setting recipe info");
+            console.log(ingredients);
+            console.log(recipeSummaries);
+            console.log(recipeDetails);
 
             setRecipeInfo({
               ingredients: ingredients,
@@ -121,7 +119,7 @@ function Recipes() {
       ingredients = location.state?.ingredients;
       getRecipeInformation(ingredients);
     } else if (ingredients.length === 0) {
-      // Get all ingredients from the fridge that the user has
+      // get all ingredients from the fridge that the user has
       console.log("getting ingredients from fridge");
       fridgeApi.get("/get-fridge").then((response) => {
         ingredients = response.data;
@@ -141,6 +139,11 @@ function Recipes() {
         />
       );
     });
+
+  console.log("recipe summaries");
+  console.log(recipeInfo.recipeSummaries);
+  console.log("fridge only");
+  console.log(fridgeOnly);
 
   const ingredientsNeededRecipes = recipeInfo.recipeSummaries
     .filter((recipe) => recipe.missedIngredientCount > 0)
@@ -205,7 +208,7 @@ const styles = {
     "p-10",
     "mt-5",
   ],
-  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4", ],
+  table: ["border-separate", "border-spacing-y-3", "table-auto", "mt-4"],
   recipeCtn: ["flex", "flex-wrap", "items-center", "justify-center", "gap-x-5"],
   row: ["text-xl"],
   title: ["text-2xl", "font-bold", "mt-8", "tracking-wide"],
