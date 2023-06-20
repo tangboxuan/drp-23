@@ -77,6 +77,7 @@ function IngredientRow({
               value={newQuantity}
               className={getStyle(styles, "edit")}
               size="small"
+              type="number"
               onChange={(e) => setNewQuantity(e.target.value)}
             ></TextField>
           ) : (
@@ -91,6 +92,7 @@ function IngredientRow({
             value={newExpiry}
             className={getStyle(styles, "edit")}
             size="small"
+            type="number"
             onChange={(e) => setNewExpiry(e.target.value)}
           ></TextField>
         ) : (
