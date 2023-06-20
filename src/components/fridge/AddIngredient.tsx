@@ -15,7 +15,12 @@ import { useLocation } from "react-router-dom";
 type spoonacularIngredient = {
   image: string;
   name: string;
+  id: number;
 };
+
+type detailedSpoonacularIngredient = {
+  categoryPath: string[];
+}
 
 interface Props {
   refresh: () => void;
@@ -51,21 +56,48 @@ function AddIngredient({ refresh }: Props) {
   }, []);
 
   const addToFridge = () => {
+    console.log("Adding to fridge")
+    console.log(ingredient)
+
+
     if (ingredient) {
-      api
-        .post("/add-to-fridge", {
-          name: ingredient.name,
-          quantity: quantity,
-          expiry: expiry,
-          image: ingredient.image,
-          category: "Vegetables",
-        })
-        .then(() => {
-          setAdding(false);
-          setIngredient(null);
-          setQuantity(0);
-          refresh();
+      recipesApi
+        .get("/food/ingredients/" + ingredient.id + "/information", {
+          headers: {
+            'X-RapidAPI-Key': 'aeb829b790mshc38c4633825123fp1b59acjsnef421b3516d6',
+            'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+          }
+        }).then((response) => {
+          console.log(response.data)
+          const responseIngredient: detailedSpoonacularIngredient = response.data
+          const categories = responseIngredient.categoryPath
+          const correct = categories.sort((a, b) => {
+            return a.length - b.length;
+          });
+          let category: string;
+          if (correct.length > 0) {
+            category = correct[0];
+            category = category.charAt(0).toUpperCase() + category.slice(1)
+          } else {
+            category = "Other"
+          }
+          console.log(category)
+          api
+            .post("/add-to-fridge", {
+              name: ingredient.name,
+              quantity: quantity,
+              expiry: expiry,
+              image: ingredient.image,
+              category: category,
+            })
+            .then(() => {
+              setAdding(false);
+              setIngredient(null);
+              setQuantity(0);
+              refresh();
+            });
         });
+
     } else {
       alert("Please select an ingredient");
     }
@@ -73,7 +105,7 @@ function AddIngredient({ refresh }: Props) {
 
   const searchIngredient = (i: string) => {
     recipesApi
-      .get("/food/ingredients/autocomplete", {
+      .get("/food/ingredients/search", {
         params: {
           query: i,
           apiKey: currentApiKey,
@@ -84,7 +116,7 @@ function AddIngredient({ refresh }: Props) {
         }
       })
       .then((response) => {
-        setAutocomplete(response.data);
+        setAutocomplete(response.data.results);
       });
   };
 
