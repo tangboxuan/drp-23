@@ -12,9 +12,10 @@ class Ingredient(db.Model):
 
 
 def init():
-    db.session.add(Ingredient(name="Broccoli", quantity=5, image="broccoli.jpg", category="Vegetables", expiry=date.today() + timedelta(days=5)))
-    db.session.add(Ingredient(name="Carrot", quantity=5, image="sliced-carrot.png", category="Vegetables", expiry=date.today() + timedelta(days=3)))
-    db.session.add(Ingredient(name="Potato", quantity=5, image="potatoes-yukon-gold.png", category="Vegetables", expiry=date.today() + timedelta(days=-1)))
+    db.session.add(Ingredient(name="Broccoli", quantity=5, image="broccoli.jpg", category="Vegetable", expiry=date.today() + timedelta(days=5)))
+    db.session.add(Ingredient(name="Carrot", quantity=5, image="sliced-carrot.png", category="Vegetable", expiry=date.today() + timedelta(days=3)))
+    db.session.add(Ingredient(name="Potato", quantity=5, image="potatoes-yukon-gold.png", category="Vegetable", expiry=date.today() + timedelta(days=-1)))
+    db.session.add(Ingredient(name="Apple", quantity=5, image="apple.jpg", category="Fruit", expiry=date.today() + timedelta(days=2)))
     db.session.commit()
 
 
